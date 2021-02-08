@@ -1,17 +1,21 @@
 "use strict"
 //- Плагины -//
-const { src, dest } = require("gulp")                         //                                                                                                    Документация => https://gulpjs.com/docs/en/api/src , https://gulpjs.com/docs/en/api/dest
+const { src, dest, lastRun } = require("gulp")                         //                                                                                                    Документация => https://gulpjs.com/docs/en/api/src , https://gulpjs.com/docs/en/api/dest
 const gulp          = require("gulp")                         // Cборщик проектов позволяет собирать проект из разных плагинов                                      Документация => https://gulpjs.com документация на русском https://webdesign-master.ru/blog/docs/gulp-documentation.html
+
 // html 
 const htmlmin       = require('gulp-htmlmin')
 const pug           = require("gulp-pug")                     // Шаблонизатор Pug                                                                                   Документация => https://gist.github.com/neretin-trike/53aff5afb76153f050c958b82abd9228
+
 // css
 const autoprefixer  = require("gulp-autoprefixer")            // Позволяет при компиляции добавлять префиксы.                                                       Документация => https://github.com/postcss/autoprefixer
+const shorthand     = require("gulp-shorthand")               // Позволяет сокращает стили.                                                                         Документация => https://www.npmjs.com/package/gulp-shorthand
 const cleanСss      = require('gulp-clean-css')               // Позволяет гибко настраивать вывод css.                                                             Документация => https://github.com/jakubpawlowicz/clean-css#formatting-options
 const media         = require("gulp-group-css-media-queries") // Позволяет собирать все медиа с одинаковым условием в один media запрос.                            Документация => https://github.com/Se7enSky/group-css-media-queries#readme
-const less = require("gulp-less")                             // Позволяет при компилировать из less формата в css.                                                 Документация => https://github.com/gulp-community/gulp-less#readme
-const scss = require("gulp-sass")                             // Позволяет при компилировать из scss формата в css.                                                 Документация => https://github.com/dlmanning/gulp-sass#readme
+const less          = require("gulp-less")                    // Позволяет при компилировать из less формата в css.                                                 Документация => https://github.com/gulp-community/gulp-less#readme
+const scss          = require("gulp-sass")                    // Позволяет при компилировать из scss формата в css.                                                 Документация => https://github.com/dlmanning/gulp-sass#readme
 const preprocessor = 'less'                                   // Позволяет выбирать какой препроцессор будем использовать, мы передаем значение название плагина которых хотим использовать а не саму функцию это очень фажно в дальньшем вы сами увидите почему 
+
 // js
 const rigger        = require("gulp-rigger")                  // Позволяет созавать компоненты js и собирать их в один документ.                                    Документация => https://github.com/kuzyk/gulp-rigger#readme 
 const terser        = require("gulp-terser")                  // Позволяет минифицировать js файл.                                                                  Документация => https://www.npmjs.com/package/gulp-terser
@@ -22,11 +26,13 @@ const webpHtml      = require("gulp-webp-html")               // Позволя�
 const webpcss       = require("gulp-webp-css")                // Позволяет подключать изображение через css, а плагин будет дополнительно подключать формат wemp.   Документация => https://www.npmjs.com/package/gulp-webp-css
 const webp          = require("gulp-webp")                    // Позволяет преобразовать изображение в формат webp.                                                 Документация => https://www.npmjs.com/package/gulp-webp
 const newer         = require('gulp-newer')                   // Позволяет нам проверять изображения на наличие уже оптимизовнных и не оптимизировать их заново     Документация => https://www.npmjs.com/package/gulp-newer
+
 // common
 const browsersync   = require("browser-sync").create()        // Позволяет создавать локальный сервер для вашей работы.                                             Документация => https://browsersync.io/
 const plumber       = require("gulp-plumber")                 // Позволяет выводить ошибки тасок.                                                                   Документация => https://www.npmjs.com/package/gulp-plumber
 const rename        = require("gulp-rename")                  // Позволяет изменять имя файлы , добавлять новый суффикс или новый формат.                           Документация => https://www.npmjs.com/package/gulp-rename
 const del           = require("del")                          // Позволяет удалить файлы в зависимости от от рпасположения пути.                                    Документация => https://www.npmjs.com/package/del
+
 //- Cоздание путей -//
 //Создаем переменную ей указываем объекты в которых будем хранить пути к нашим форматам пути зависят от структуры наших папок 
 var path = {
@@ -47,8 +53,12 @@ var path = {
 	watch: {
 		html: "src/**/*.pug",
 		js: "src/js/**/*.js",
-		style: "src/main/less/**/*.less",
+		style: "src/main/"+preprocessor+"/**/*."+preprocessor+"",
 		images: "src/assets/images/**/*.{jpg,png,svg,gif,ico,webp}",
+		//Библиотеки
+		// libraryProcs: "src/library/swiper/**/*."+preprocessor+"",
+		// libraryCss: "src/library/swiper/**/*.css",
+		// libraryJs: "src/library/swiper/**/*.js"
 	},
 	clean:'dist'
 }
@@ -76,6 +86,10 @@ function html() {
 		.pipe(pug({
 			pretty: true
 		}))
+		.pipe(htmlmin({
+			collapseWhitespace: false,
+			removeComments: false,
+		}))
 		.pipe(webpHtml())
 		.pipe(dest(path.build.html))
 		.pipe(htmlmin({
@@ -96,19 +110,19 @@ function css() {
 		.pipe(plumber())
 		.pipe(eval(preprocessor)())    // функция eval() нам помогает преобрзовать строчный тип в функцию тоесть убрать ковычки чтоб pipe смог нормально прочитать значение было так "less"(название плагина)=>less сам плагин
 		.pipe(autoprefixer({
-			overrideBrowserslist: ['last 8 versions'],
+			overrideBrowserslist: ['last 4 version'],
 			cascade: true
 		}))
 		.pipe(cleanСss({
 			format: 'beautify',
 			level: { specialComments: true }
-
 		}))
+		.pipe(shorthand())
 		.pipe(media())
 		.pipe(webpcss())
 		.pipe(dest(path.build.css))
 		.pipe(cleanСss({
-			level: { 1: { specialComments: 0 } }
+			level: { 2: { specialComments: 0 } }
 		}))
 		.pipe(rename({
 			suffix: ".min",
@@ -171,6 +185,10 @@ function watchFiles() {
 	gulp.watch([path.watch.style], css)
 	gulp.watch([path.watch.js], js)
 	gulp.watch([path.watch.images], images)
+	//Библиотеки
+	// gulp.watch([path.watch.libraryProcs], css)
+	// gulp.watch([path.watch.libraryCss], css)
+	// gulp.watch([path.watch.libraryJs], js)
 }
 //Создаем переменную в которую будем включать все интсрукции которые мы сделали выше gulp.series - позволяет запустить таски по порядку gulp.parallel паралейно другим таскам // Документация => https://gulpjs.com/docs/en/api/concepts
 const build = gulp.series(clean,gulp.parallel(html, css, js, images, fonts));
