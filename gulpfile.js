@@ -1,6 +1,6 @@
 "use strict"
 //- Плагины -//
-const { src, dest, lastRun } = require("gulp")                         //                                                                                                    Документация => https://gulpjs.com/docs/en/api/src , https://gulpjs.com/docs/en/api/dest
+const { src, dest, } = require("gulp")                        //                                                                                                    Документация => https://gulpjs.com/docs/en/api/src , https://gulpjs.com/docs/en/api/dest
 const gulp          = require("gulp")                         // Cборщик проектов позволяет собирать проект из разных плагинов                                      Документация => https://gulpjs.com документация на русском https://webdesign-master.ru/blog/docs/gulp-documentation.html
 
 // html 
