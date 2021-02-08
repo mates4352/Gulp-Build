@@ -46,14 +46,14 @@ var path = {
 	src: {
 		html: "src/*.pug",
 		js: "src/js/*.js",
-		style: "src/main/"+preprocessor+"/index."+preprocessor+"",     // Мы в пути пишем название переменной которая хранит название в строчном типе. Если бы мы указали бы просто ссылку на функцию то была бы сдесь ошибка 
+		style: "src/"+preprocessor+"/index."+preprocessor+"",     // Мы в пути пишем название переменной которая хранит название в строчном типе. Если бы мы указали бы просто ссылку на функцию то была бы сдесь ошибка 
 		images: "src/assets/images/**/*.{jpg,png,svg,gif,ico,webp}",
 		fonts: "src/assets/fonts/*.{ttf,eot,svg,woff}",
 	},
 	watch: {
 		html: "src/**/*.pug",
 		js: "src/js/**/*.js",
-		style: "src/main/"+preprocessor+"/**/*."+preprocessor+"",
+		style: "src/"+preprocessor+"/**/*."+preprocessor+"",
 		images: "src/assets/images/**/*.{jpg,png,svg,gif,ico,webp}",
 		//Библиотеки
 		// libraryProcs: "src/library/swiper/**/*."+preprocessor+"",
@@ -175,7 +175,7 @@ function fonts() {
 //----CLEAN----//
 
 function clean() {
-	return del(['dist/**','!dist/**/assets'])
+	return del(['dist/**'])
 }
 // return del(path.clean)
 //gulp.watch - функуия gulp, позволяет нам следить за изменениями файлов в которых указан путь, в качестве 2 параметра записывается имя такски которую нужно использовать при изменение этого файла//
