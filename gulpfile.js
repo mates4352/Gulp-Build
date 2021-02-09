@@ -14,7 +14,7 @@ const cleanСss      = require('gulp-clean-css')               // Позволя
 const media         = require("gulp-group-css-media-queries") // Позволяет собирать все медиа с одинаковым условием в один media запрос.                            Документация => https://github.com/Se7enSky/group-css-media-queries#readme
 const less          = require("gulp-less")                    // Позволяет при компилировать из less формата в css.                                                 Документация => https://github.com/gulp-community/gulp-less#readme
 const scss          = require("gulp-sass")                    // Позволяет при компилировать из scss формата в css.                                                 Документация => https://github.com/dlmanning/gulp-sass#readme
-const preprocessor = 'less'                                   // Позволяет выбирать какой препроцессор будем использовать, мы передаем значение название плагина которых хотим использовать а не саму функцию это очень фажно в дальньшем вы сами увидите почему 
+const preprocessor = 'scss'                                   // Позволяет выбирать какой препроцессор будем использовать, мы передаем значение название плагина которых хотим использовать а не саму функцию это очень фажно в дальньшем вы сами увидите почему 
 
 // js
 const rigger        = require("gulp-rigger")                  // Позволяет созавать компоненты js и собирать их в один документ.                                    Документация => https://github.com/kuzyk/gulp-rigger#readme 
@@ -34,35 +34,32 @@ const rename        = require("gulp-rename")                  // Позволя�
 const del           = require("del")                          // Позволяет удалить файлы в зависимости от от рпасположения пути.                                    Документация => https://www.npmjs.com/package/del
 
 //- Cоздание путей -//
-//Создаем переменную ей указываем объекты в которых будем хранить пути к нашим форматам пути зависят от структуры наших папок 
+
 var path = {
 	build: {
-		html: "dist/",
-		js: "dist/js/",
-		css: "dist/css/",
-		images: "dist/assets/images",
-		fonts: "dist/assets/fonts",
+		html:     "dist/",
+		js:       "dist/js/",
+		css:      "dist/css/",
+		images:   "dist/assets/images",
+		fonts:    "dist/assets/fonts",
 	},
 	src: {
-		html: "src/*.pug",
-		js: "src/js/*.js",
-		style: "src/"+preprocessor+"/index."+preprocessor+"",     // Мы в пути пишем название переменной которая хранит название в строчном типе. Если бы мы указали бы просто ссылку на функцию то была бы сдесь ошибка 
-		images: "src/assets/images/**/*.{jpg,png,svg,gif,ico,webp}",
-		fonts: "src/assets/fonts/*.{ttf,eot,svg,woff}",
+		html:     "src/*.pug",
+		js:       "src/js/*.js",
+		style:    "src/"+preprocessor+"/index."+preprocessor+"",     // Мы в пути пишем название переменной которая хранит название в строчном типе. Если бы мы указали бы просто ссылку на функцию то была бы сдесь ошибка 
+		images:   "src/assets/images/**/*.{jpg,png,svg,gif,ico,webp}",
+		fonts:    "src/assets/fonts/*.{ttf,eot,svg,woff,woff2}",
 	},
 	watch: {
-		html: "src/**/*.pug",
-		js: "src/js/**/*.js",
-		style: "src/"+preprocessor+"/**/*."+preprocessor+"",
-		images: "src/assets/images/**/*.{jpg,png,svg,gif,ico,webp}",
-		//Библиотеки
-		// libraryProcs: "src/library/swiper/**/*."+preprocessor+"",
-		// libraryCss: "src/library/swiper/**/*.css",
-		// libraryJs: "src/library/swiper/**/*.js"
+		html:     "src/**/*.pug",
+		js:       "src/js/**/*.js",
+		style:    "src/"+preprocessor+"/**/*."+preprocessor+"",
+		images:   "src/assets/images/**/*.{jpg,png,svg,gif,ico,webp}",
 	},
 	clean:'dist'
 }
-// Создание тасок сдесь сиснтаксис объевления зависит от gulp как вы будете обьявлять зависит от вас в данном примере gulp 5 //
+
+//----tack----//
 
 function browserSync(done) {
 	browsersync.init({
@@ -78,6 +75,7 @@ function browserSync(done) {
 function browserSyncReload(done) {
 	browsersync.reload();
 }
+
 //----HTML----//
 
 function html() {
@@ -103,6 +101,7 @@ function html() {
 		.pipe(dest(path.build.html))
 		.pipe(browsersync.stream())
 }
+
 //----CSS----//
 
 function css() {
@@ -117,9 +116,8 @@ function css() {
 			format: 'beautify',
 			level: { specialComments: true }
 		}))
-		.pipe(shorthand())
-		.pipe(media())
 		.pipe(webpcss())
+		.pipe(media())
 		.pipe(dest(path.build.css))
 		.pipe(cleanСss({
 			level: { 2: { specialComments: 0 } }
@@ -128,9 +126,26 @@ function css() {
 			suffix: ".min",
 			extname: ".css"
 		}))
+		.pipe(shorthand())
 		.pipe(dest(path.build.css))
 		.pipe(browsersync.stream())
 }
+
+//----styleWatch----//
+
+function styleWatch(){
+	return src(path.src.style)
+		.pipe(plumber())
+		.pipe(eval(preprocessor)())
+		.pipe(dest(path.build.css))
+		.pipe(rename({
+			suffix: ".min",
+			extname: ".css"
+		}))
+		.pipe(dest(path.build.css))
+		.pipe(browsersync.stream())
+}
+
 //----JS----//
 
 function js() {
@@ -146,6 +161,7 @@ function js() {
 		.pipe(dest(path.build.js))
 		.pipe(browsersync.stream())
 }
+
 //----IMG----//
 
 function images() {
@@ -166,35 +182,36 @@ function images() {
 		.pipe(dest(path.build.images))
 		.pipe(browsersync.stream())
 }
+
 //----FONTS----//
 
 function fonts() {
 	return src(path.src.fonts)
 		.pipe(dest(path.build.fonts))
 }
+
 //----CLEAN----//
 
 function clean() {
 	return del(['dist/**'])
 }
-// return del(path.clean)
-//gulp.watch - функуия gulp, позволяет нам следить за изменениями файлов в которых указан путь, в качестве 2 параметра записывается имя такски которую нужно использовать при изменение этого файла//
+
+//----Watch----//
 
 function watchFiles() {
 	gulp.watch([path.watch.html], html,)
 	gulp.watch([path.watch.style], css)
 	gulp.watch([path.watch.js], js)
 	gulp.watch([path.watch.images], images)
-	//Библиотеки
-	// gulp.watch([path.watch.libraryProcs], css)
-	// gulp.watch([path.watch.libraryCss], css)
-	// gulp.watch([path.watch.libraryJs], js)
 }
+
 //Создаем переменную в которую будем включать все интсрукции которые мы сделали выше gulp.series - позволяет запустить таски по порядку gulp.parallel паралейно другим таскам // Документация => https://gulpjs.com/docs/en/api/concepts
 const build = gulp.series(clean,gulp.parallel(html, css, js, images, fonts));
 const watch = gulp.series(build,gulp.parallel(browserSync,watchFiles));
 
-//Подключение наших функций(тасок) к gulp чтоб он мог их понять 
+//----Экспорт таск----//
+
+exports.styleWatch = styleWatch
 exports.fonts = fonts
 exports.html = html
 exports.css = css
