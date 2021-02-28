@@ -5,8 +5,8 @@ const gulp          = require("gulp")                         // Cборщик �
 
 // html 
 const htmlmin       = require('gulp-htmlmin')
-const pug           = require("gulp-pug")                     // Шаблонизатор Pug                                                                                   Документация => https://gist.github.com/neretin-trike/53aff5afb76153f050c958b82abd9228
-
+// const pug           = require("gulp-pug")                     // Шаблонизатор Pug                                                                                   Документация => https://gist.github.com/neretin-trike/53aff5afb76153f050c958b82abd9228
+const include       = require("gulp-file-include")               // Сборщик файлов html                                                                             Документация => https://www.npmjs.com/package/gulp-file-include
 // css
 const autoprefixer  = require("gulp-autoprefixer")            // Позволяет при компиляции добавлять префиксы.                                                       Документация => https://github.com/postcss/autoprefixer
 const shorthand     = require("gulp-shorthand")               // Позволяет сокращает стили.                                                                         Документация => https://www.npmjs.com/package/gulp-shorthand
@@ -44,14 +44,14 @@ var path = {
 		fonts:    "dist/assets/fonts",
 	},
 	src: {
-		html:     "src/*.pug",
+		html:     "src/*.html",
 		js:       "src/js/*.js",
 		style:    "src/"+preprocessor+"/index."+preprocessor+"",     // Мы в пути пишем название переменной которая хранит название в строчном типе. Если бы мы указали бы просто ссылку на функцию то была бы сдесь ошибка 
 		images:   "src/assets/images/**/*.{jpg,png,svg,gif,ico,webp}",
 		fonts:    "src/assets/fonts/*.{ttf,eot,svg,woff,woff2}",
 	},
 	watch: {
-		html:     "src/**/*.pug",
+		html:     "src/**/*.html",
 		js:       "src/js/**/*.js",
 		style:    "src/"+preprocessor+"/**/*."+preprocessor+"",
 		images:   "src/assets/images/**/*.{jpg,png,svg,gif,ico,webp}",
@@ -81,9 +81,10 @@ function browserSyncReload(done) {
 function html() {
 	return src(path.src.html)
 		.pipe(plumber())
-		.pipe(pug({
-			pretty: true
-		}))
+		// .pipe(pug({
+		// 	pretty: true
+		// }))
+		.pipe(include())
 		.pipe(htmlmin({
 			collapseWhitespace: false,
 			removeComments: false,
