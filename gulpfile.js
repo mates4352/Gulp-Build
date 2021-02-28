@@ -77,18 +77,21 @@ function browserSyncReload(done) {
 }
 
 //----HTML----//
+// пишем с pug 
+
+	// .pipe(pug({
+		// 	pretty: true
+		// }))
+
+		// .pipe(htmlmin({
+		// 	collapseWhitespace: false,
+		// 	removeComments: false,
+		// }))
 
 function html() {
 	return src(path.src.html)
 		.pipe(plumber())
-		// .pipe(pug({
-		// 	pretty: true
-		// }))
 		.pipe(include())
-		.pipe(htmlmin({
-			collapseWhitespace: false,
-			removeComments: false,
-		}))
 		.pipe(webpHtml())
 		.pipe(dest(path.build.html))
 		.pipe(htmlmin({
