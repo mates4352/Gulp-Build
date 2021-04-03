@@ -3,9 +3,9 @@
 	"version": "1.0.0",
 	"description": "project document",
 	"author": "Sergei Sabyrkih",
-	"homepage":"https://mates4352.gitgub.io/Dart-service-manager",
+	"homepage": "https://mates4352.gitgub.io/Dart-service-manager",
 	"scripts": {
-		"deploy":"gh-pages -d dist"
+		"deploy": "gh-pages -d dist"
 	},
 	"devDependencies": {
 		"browser-sync": "^2.26.13",
