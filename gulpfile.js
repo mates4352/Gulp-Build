@@ -119,7 +119,7 @@ function css() {
 		.pipe(webpcss())
 		.pipe(media())
 		.pipe(cleanСss({
-			format : 'beautify',
+			format: 'beautify',
 			level: { specialComments: true },
 		}))
 		.pipe(dest(path.build.css))
@@ -178,12 +178,17 @@ function images() {
 		.pipe(dest(path.build.images))
 		.pipe(src(path.src.images))
 		.pipe(newer(path.build.images))
-		.pipe(imagemin({
-			progressive: true,
-			svgoPlugins: [{ removeViewBox: false }],
-			interlaced: true,
-			optimizationLevel: 5  // max 7
-		}))
+		.pipe(imagemin([
+			imagemin.gifsicle({ interlaced: true }),
+			imagemin.mozjpeg({ quality: 75, progressive: true }),
+			imagemin.optipng({ optimizationLevel: 5 }),
+			imagemin.svgo({
+				plugins: [
+					{ removeViewBox: true },
+					{ cleanupIDs: false }
+				]
+			})
+		]))
 		.pipe(dest(path.build.images))
 		.pipe(browsersync.stream())
 }
@@ -234,8 +239,8 @@ function watchFiles() {
 }
 
 //Создаем переменную в которую будем включать все интсрукции которые мы сделали выше gulp.series - позволяет запустить таски по порядку gulp.parallel паралейно другим таскам // Документация => https://gulpjs.com/docs/en/api/concepts
-const build = gulp.series(clean,gulp.parallel(html, css, js, images, fonts));
-const watch = gulp.series(build,gulp.parallel(browserSync,watchFiles,fontsStyle));
+const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts));
+const watch = gulp.series(build, gulp.parallel(browserSync, watchFiles, fontsStyle));
 
 //----Экспорт таск----//
 
