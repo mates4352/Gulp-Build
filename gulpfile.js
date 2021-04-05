@@ -66,7 +66,7 @@ function browserSync(done) {
 		server: {
 			baseDir: "dist"
 		},
-		port: 3001,
+		port: 3000,
 		notify: false,
 		// online:false позволяет работать без подлючение к сети 
 	});
@@ -116,21 +116,22 @@ function css() {
 			overrideBrowserslist: ['last 4 version'],
 			cascade: true
 		}))
-		.pipe(cleanСss({
-			format: 'beautify',
-			level: { specialComments: true }
-		}))
 		.pipe(webpcss())
-		.pipe(dest(path.build.css))
+		.pipe(media())
 		.pipe(cleanСss({
-			level: { 2: { specialComments: 0 } }
+			format : 'beautify',
+			level: { specialComments: true },
 		}))
+		.pipe(dest(path.build.css))
 		.pipe(rename({
 			suffix: ".min",
 			extname: ".css"
 		}))
 		.pipe(shorthand())
 		.pipe(media())
+		.pipe(cleanСss({
+			level: { 2: { specialComments: 0 } },
+		}))
 		.pipe(dest(path.build.css))
 		.pipe(browsersync.stream())
 }
@@ -193,7 +194,7 @@ function images() {
 const PATH = 'src/scss/base/_fonts.scss'
 function fontsStyle(params) {
 	const file_content = fs.readFileSync(PATH);
-	if (file_content == '') {
+	if (file_content == '' || file_content == false) {
 		fs.writeFile(PATH, '', cb);
 		return fs.readdir(path.build.fonts, function (err, items) {
 			if (items) {
@@ -227,7 +228,7 @@ function clean() {
 
 function watchFiles() {
 	gulp.watch([path.watch.html], html,)
-	gulp.watch([path.watch.style], styleWatch)
+	gulp.watch([path.watch.style], css)
 	gulp.watch([path.watch.js], js)
 	gulp.watch([path.watch.images], images)
 }
