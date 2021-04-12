@@ -3,6 +3,7 @@
 const { src, dest, } = require("gulp")                        //                                                                                                    Документация => https://gulpjs.com/docs/en/api/src , https://gulpjs.com/docs/en/api/dest
 const gulp = require("gulp")                         // Cборщик проектов позволяет собирать проект из разных плагинов                                      Документация => https://gulpjs.com документация на русском https://webdesign-master.ru/blog/docs/gulp-documentation.html
 const fs = require('fs');
+
 // html 
 const htmlmin = require('gulp-htmlmin')
 // const pug           = require("gulp-pug")                     // Шаблонизатор Pug                                                                                   Документация => https://gist.github.com/neretin-trike/53aff5afb76153f050c958b82abd9228
@@ -10,6 +11,7 @@ const include = require("gulp-file-include")               // Сборщик ф�
 // css
 const autoprefixer = require("gulp-autoprefixer")            // Позволяет при компиляции добавлять префиксы.                                                       Документация => https://github.com/postcss/autoprefixer
 const shorthand = require("gulp-shorthand")               // Позволяет сокращает стили.                                                                         Документация => https://www.npmjs.com/package/gulp-shorthand
+const sourcemaps = require('gulp-sourcemaps')
 const cleanСss = require('gulp-clean-css')               // Позволяет гибко настраивать вывод css.                                                             Документация => https://github.com/jakubpawlowicz/clean-css#formatting-options
 const media = require("gulp-group-css-media-queries") // Позволяет собирать все медиа с одинаковым условием в один media запрос.                            Документация => https://github.com/Se7enSky/group-css-media-queries#readme
 const less = require("gulp-less")                    // Позволяет при компилировать из less формата в css.                                                 Документация => https://github.com/gulp-community/gulp-less#readme
@@ -39,6 +41,7 @@ const path = {
 	build: {
 		html: "dist/",
 		js: "dist/js/",
+		library: "dist/library/",
 		css: "dist/css/",
 		images: "dist/assets/images",
 		fonts: "dist/assets/fonts",
@@ -46,22 +49,23 @@ const path = {
 	src: {
 		html: "src/*.html",
 		js: "src/js/*.js",
-		style: "src/" + preprocessor + "/style." + preprocessor + "",     // Мы в пути пишем название переменной которая хранит название в строчном типе. Если бы мы указали бы просто ссылку на функцию то была бы сдесь ошибка 
+		library: "src/library/**",
+		style: "src/" + preprocessor + "/style." + preprocessor + "",
 		images: "src/assets/images/**/*.{jpg,png,svg,gif,ico,webp}",
 		fonts: "src/assets/fonts/*.{ttf,eot,svg,woff,woff2}",
 	},
 	watch: {
 		html: "src/**/*.html",
 		js: "src/js/**/*.js",
+		library: "src/library/**",
 		style: "src/" + preprocessor + "/**/*." + preprocessor + "",
 		images: "src/assets/images/**/*.{jpg,png,svg,gif,ico,webp}",
 	},
 	clean: 'dist'
 }
 
-//----tack----//
-
-function browserSync(done) {
+//----SERVER----//
+const server = () => {
 	browsersync.init({
 		server: {
 			baseDir: "dist"
@@ -72,23 +76,8 @@ function browserSync(done) {
 	});
 }
 
-function browserSyncReload(done) {
-	browsersync.reload();
-}
-
 //----HTML----//
-// пишем с pug 
-
-// .pipe(pug({
-// 	pretty: true
-// }))
-
-// .pipe(htmlmin({
-// 	collapseWhitespace: false,
-// 	removeComments: false,
-// }))
-
-function html() {
+export const html = () => {
 	return src(path.src.html)
 		.pipe(plumber())
 		.pipe(include())
@@ -107,14 +96,13 @@ function html() {
 }
 
 //----CSS----//
-
-function css() {
+const css = () => {
 	return src(path.src.style)
 		.pipe(plumber())
 		.pipe(eval(preprocessor)())    // функция eval() нам помогает преобрзовать строчный тип в функцию тоесть убрать ковычки чтоб pipe смог нормально прочитать значение было так "less"(название плагина)=>less сам плагин
 		.pipe(autoprefixer({
 			overrideBrowserslist: ['last 4 version'],
-			cascade: true
+			cascade: false,
 		}))
 		.pipe(webpcss())
 		.pipe(media())
@@ -136,24 +124,28 @@ function css() {
 		.pipe(browsersync.stream())
 }
 
+exports.css = css
+
 //----styleWatch----//
-//для быстрого css 
-function styleWatch() {
+const styleWatch = () => {
 	return src(path.src.style)
 		.pipe(plumber())
+		.pipe(sourcemaps.init())
 		.pipe(eval(preprocessor)())
 		.pipe(dest(path.build.css))
 		.pipe(rename({
 			suffix: ".min",
 			extname: ".css"
 		}))
+		.pipe(sourcemaps.write('./'))
 		.pipe(dest(path.build.css))
 		.pipe(browsersync.stream())
 }
 
-//----JS----//
+exports.styleWatch = styleWatch
 
-function js() {
+//----JS----//
+const  js = () => {
 	return src(path.src.js)
 		.pipe(plumber())
 		.pipe(rigger())
@@ -167,9 +159,19 @@ function js() {
 		.pipe(browsersync.stream())
 }
 
+exports.js = js
+
+//----LIBRARY----//
+const library = () => {
+	return src(path.src.library)
+	.pipe(dest(path.build.library))
+}
+
+exports.library = library
+
 //----IMG----//
 
-function images() {
+const images = () => {
 	return src(path.src.images)
 		.pipe(newer(path.build.images))
 		.pipe(webp({
@@ -193,14 +195,14 @@ function images() {
 		.pipe(browsersync.stream())
 }
 
+exports.images = images
+
 //----FONTS----//
-// автоматическое создание миксина от имен шрифта
-// иногда не создает шрифты решение удалить файл в который сохраняем
-const PATH = 'src/scss/base/_fonts.scss'
-function fontsStyle(params) {
-	const file_content = fs.readFileSync(PATH);
+const PATH__FONTS = 'src/scss/base/_fonts.scss'
+const fontsStyle = (params) => {
+	const file_content = fs.readFileSync(PATH__FONTS);
 	if (file_content == '' || file_content == false) {
-		fs.writeFile(PATH, '', cb);
+		fs.writeFile(PATH__FONTS, '', cb);
 		return fs.readdir(path.build.fonts, function (err, items) {
 			if (items) {
 				let c_fontname;
@@ -208,7 +210,7 @@ function fontsStyle(params) {
 					let fontname = items[i].split('.');
 					fontname = fontname[0];
 					if (c_fontname != fontname) {
-						fs.appendFile(PATH, '@include font-face("' + fontname + '", "' + fontname + '", "400", "normal");\r\n', cb);
+						fs.appendFile(PATH__FONTS, '@include font-face("' + fontname + '", "' + fontname + '", "400", "normal");\r\n', cb);
 					}
 					c_fontname = fontname;
 				}
@@ -216,42 +218,37 @@ function fontsStyle(params) {
 		})
 	}
 }
-function cb() { }
 
-function fonts() {
+exports.fontsStyle = fontsStyle
+
+const cb = () => { }
+
+const fonts = () => {
 	return src(path.src.fonts)
 		.pipe(dest(path.build.fonts))
 }
 
+exports.fonts = fonts
+
 //----CLEAN----//
 
-function clean() {
+const  clean =() => {
 	return del(['dist/**'])
 }
+exports.clean = clean
 
 //----Watch----//
-
 function watchFiles() {
 	gulp.watch([path.watch.html], html,)
-	gulp.watch([path.watch.style], css)
+	gulp.watch([path.watch.style], styleWatch)
 	gulp.watch([path.watch.js], js)
+	gulp.watch([path.build.library], library)
 	gulp.watch([path.watch.images], images)
 }
 
-//Создаем переменную в которую будем включать все интсрукции которые мы сделали выше gulp.series - позволяет запустить таски по порядку gulp.parallel паралейно другим таскам // Документация => https://gulpjs.com/docs/en/api/concepts
-const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts));
-const watch = gulp.series(build, gulp.parallel(browserSync, watchFiles, fontsStyle));
+const build = gulp.series(clean, gulp.parallel(html, styleWatch, js, library, images, fonts));
+const watch = gulp.series(build, gulp.parallel(server, watchFiles, fontsStyle));
 
-//----Экспорт таск----//
-
-exports.fontsStyle = fontsStyle
-exports.styleWatch = styleWatch
-exports.fonts = fonts
-exports.html = html
-exports.css = css
-exports.js = js
-exports.images = images
-exports.clean = clean
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;
