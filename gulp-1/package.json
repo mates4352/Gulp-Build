@@ -1,0 +1,9 @@
+{
+	"name": "gulp-2",
+	"version": "1.0.0",
+	"description": "gulp assembly",
+	"keywords":["GULP","JS","SCSS","LINTERS"],
+	"author": "Sergeu Sabyrkin",
+	"license":"WTFPL",
+	
+}
