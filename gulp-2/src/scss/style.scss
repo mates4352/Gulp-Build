@@ -1,1 +1,7 @@
-// main
+:root {
+   --color: red;
+}
+
+body {
+   color: var(--color);
+}
