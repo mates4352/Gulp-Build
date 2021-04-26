@@ -5,7 +5,7 @@ const config = {
    build: {
       root: destPath,
       html: `${destPath}`,
-      js: `${destPath}js`,
+      js: `${destPath}/js`,
       css: `${destPath}/css`,
       fonts: `${destPath}/assets/fonts`,
       library: `${destPath}/library`,
@@ -16,7 +16,7 @@ const config = {
    src: {
       root: srcPath,
       html: `${srcPath}/*.html`,
-      js: `${srcPath}/js/*.js`,
+      js: `${srcPath}/js/main.js`,
       library: `${srcPath}/library/**`,
       style: `${srcPath}/scss/style.scss`,
       fonts: `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
