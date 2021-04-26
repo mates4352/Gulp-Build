@@ -5,6 +5,7 @@
    },
    "rules":{
       "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*gulpfile.babel.js", "**/*gulp/**/*"]}],
-      "indent": ["error", 3]
+      "indent": ["error", 3],
+      "linebreak-style": 0
    }
 }

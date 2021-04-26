@@ -4,7 +4,7 @@ import config from '../config';
 const server = (callback) => {
    browserSync.create().init({
       server: {
-         baseDir: config.src.root,
+         baseDir: config.build.root,
       },
       files: [
          config.watch.html,

@@ -77,7 +77,7 @@ const server = () => {
 }
 
 //----HTML----//
-export const html = () => {
+const html = () => {
 	return src(path.src.html)
 		.pipe(plumber())
 		.pipe(include())
@@ -94,6 +94,7 @@ export const html = () => {
 		.pipe(dest(path.build.html))
 		.pipe(browsersync.stream())
 }
+exports.html = html
 
 //----CSS----//
 const css = () => {

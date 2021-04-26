@@ -4,6 +4,7 @@ import server from './gulp/tasks/server';
 import clean from './gulp/tasks/clean';
 import { scriptBuild, scriptWatch } from './gulp/tasks/scripts';
 import html from './gulp/tasks/html';
+import style from './gulp/tasks/style';
 
 config.setEnv();
 
@@ -11,6 +12,7 @@ export const build = gulp.series(
    clean,
    scriptBuild,
    html,
+   style,
 );
 
 export const watch = gulp.series(
