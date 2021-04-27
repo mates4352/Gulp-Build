@@ -9,8 +9,10 @@
       "indentation": 3,
       "order/properties-order": [],
       "declaration-empty-line-before": null,
+      "font-family-no-missing-generic-family-keyword":null,
       "plugin/rational-order": [true, {
       "empty-line-between-groups": true
     }]
-    }
+    },
+   "ignoreFiles": ["./dist/**/*"]
 }

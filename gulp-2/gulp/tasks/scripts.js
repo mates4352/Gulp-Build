@@ -7,7 +7,7 @@ import uglify from 'gulp-uglify';
 import gulpif from 'gulp-if';
 import config from '../config';
 
-export const scriptBuild = (callback) => {
+const script = (callback) => {
    browserify(config.src.js, { debug: true })
       .transform('babelify', { presets: ['@babel/preset-env'] })
       .bundle()
@@ -20,4 +20,4 @@ export const scriptBuild = (callback) => {
    callback();
 };
 
-export const scriptWatch = () => gulp.watch(config.src.js, scriptBuild);
+export default script;

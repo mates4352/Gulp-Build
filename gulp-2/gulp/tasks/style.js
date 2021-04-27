@@ -4,11 +4,12 @@ import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
 import cleanСss from 'gulp-clean-css';
 import scss from 'gulp-sass';
+import sourcemaps from 'gulp-sourcemaps';
 import postcss from 'gulp-postcss';
 import mqpacker from 'css-mqpacker';
-import sourcemaps from 'gulp-sourcemaps';
 import varcss from 'postcss-custom-properties';
 import autoprefixer from 'autoprefixer';
+
 import config from '../config';
 
 const style = (callback) => {
@@ -23,12 +24,13 @@ const style = (callback) => {
       .pipe(gulpif(config.isDev, sourcemaps.write()))
       .pipe(gulp.dest(config.build.css))
       .pipe(gulpif(config.isProd, postcss(
-         [autoprefixer([
-            '> 0.1%',
-            'IE 10',
-         ]),
-         varcss(),
-         mqpacker(),
+         [
+            autoprefixer([
+               '> 0.1%',
+               'IE 10',
+            ]),
+            varcss(),
+            mqpacker(),
          ],
       )))
       .pipe(gulpif(config.isProd, rename({
