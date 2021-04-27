@@ -8,6 +8,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import postcss from 'gulp-postcss';
 import mqpacker from 'css-mqpacker';
 import varcss from 'postcss-custom-properties';
+import assets from 'postcss-assets';
 import autoprefixer from 'autoprefixer';
 
 import config from '../config';
@@ -25,6 +26,11 @@ const style = (callback) => {
       .pipe(gulp.dest(config.build.css))
       .pipe(gulpif(config.isProd, postcss(
          [
+            assets(
+               {
+                  loadPaths: ['assets/images/'],
+               },
+            ),
             autoprefixer([
                '> 0.1%',
                'IE 10',

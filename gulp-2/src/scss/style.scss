@@ -4,5 +4,6 @@
 
 body {
    color: var(--color);
-   font-family: 'Alice';
+
+   background: resolve('banner.png');
 }

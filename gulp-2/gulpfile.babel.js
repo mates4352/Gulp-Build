@@ -7,7 +7,9 @@ import script from './gulp/tasks/scripts';
 import html from './gulp/tasks/html';
 import style from './gulp/tasks/style';
 import library from './gulp/tasks/library';
-import { fonts, images, icons } from './gulp/tasks/assets';
+import fonts from './gulp/tasks/fonts';
+import images from './gulp/tasks/images';
+import icons from './gulp/tasks/icons';
 
 config.setEnv();
 
@@ -18,9 +20,9 @@ export const build = gulp.series(
       html,
       style,
       library,
-      fonts,
       images,
       icons,
+      fonts,
    ),
 );
 

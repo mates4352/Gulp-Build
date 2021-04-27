@@ -3,7 +3,8 @@ import script from './tasks/scripts';
 import html from './tasks/html';
 import style from './tasks/style';
 import library from './tasks/library';
-import { images, icons } from './tasks/assets';
+import images from './tasks/fonts';
+import icons from './tasks/icons';
 import config from './config';
 
 const watchFile = (callback) => {
