@@ -1,5 +1,5 @@
 import browserSync from 'browser-sync';
-import config from '../config';
+import config from './config';
 
 const server = (callback) => {
    browserSync.create().init({

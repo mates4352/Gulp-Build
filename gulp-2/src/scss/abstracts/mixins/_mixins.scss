@@ -1,0 +1,48 @@
+@mixin size($w,$h:$w) {
+   width: $w;
+   height: $h;
+}
+
+//-----------mixins flex-----------//
+
+@mixin flex-a-j($alignItems,$justifyContent){
+   display: flex;
+   align-items: $alignItems;
+   justify-content: $justifyContent;
+}
+
+@mixin flex-a-j-d($alignItems,$justifyContent,$direction){
+   display: flex;
+   flex-direction: $direction;
+   align-items: $alignItems;
+   justify-content: $justifyContent;
+}
+
+//--------------text----------------//
+
+@mixin font($size:false,$lh:false,$weight:false,$text-align:false) {
+   @if $size { font-size: $size; }
+   @if $lh { line-height: $lh; }
+   @if $weight { font-weight: $weight; }
+   @if $text-align { text-align: $text-align; }
+}
+
+//----------------media------------------//
+
+@mixin media($minmax, $media) {
+   @media only screen and (#{$minmax}-width: $media) {
+      @content;
+   }
+}
+
+@mixin font-face($font_name, $file_name, $weight, $style) {
+   @font-face {
+      font-family: $font_name;
+      font-display: swap;
+      src:
+         url("../../assets/fonts/#{$file_name}.woff") format("woff"),
+         url("../../assets/fonts/#{$file_name}.woff2") format("woff2");
+      font-weight: #{$weight};
+      font-style: #{$style};
+   }
+}

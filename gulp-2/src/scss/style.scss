@@ -1,9 +1,30 @@
-:root {
-   --color: red;
-}
+// -variable- //
+@import "abstracts/variable/variable";
 
-body {
-   color: var(--color);
+// -mixins- //
+@import "abstracts/mixins/mixins";
 
-   background: resolve('banner.png');
+// -elements- //
+@import "abstracts/elements/elements";
+
+// -base- //
+@import "base/fonts";
+@import "base/nullstyle";
+
+// -components- //
+// @import "components/button.scss";
+
+// -Header- //
+@import "layout/header";
+
+// -Content- //
+// @import "content_.scss";
+
+// -footer- //
+@import "layout/footer";
+
+.header {
+   @media screen and(max-width: var(--xll)) {
+      color: yellow;
+   }
 }

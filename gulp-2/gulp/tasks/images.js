@@ -18,12 +18,6 @@ const images = (callback) => {
       .pipe(gulpif(config.isProd, imagemin([
          imagemin.mozjpeg({ quality: 75 }),
          imageminOptipng({ quality: [0.8, 0.9] }),
-         imagemin.svgo({
-            plugins: [
-               { removeViewBox: true },
-               { cleanupIDs: false },
-            ],
-         }),
       ],
       {
          verbose: true,

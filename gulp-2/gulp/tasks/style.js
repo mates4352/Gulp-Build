@@ -4,39 +4,39 @@ import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
 import cleanСss from 'gulp-clean-css';
 import scss from 'gulp-sass';
-import sourcemaps from 'gulp-sourcemaps';
 import postcss from 'gulp-postcss';
 import mqpacker from 'css-mqpacker';
-import varcss from 'postcss-custom-properties';
-import assets from 'postcss-assets';
+import varcss from 'postcss-css-variables';
 import autoprefixer from 'autoprefixer';
+import media from 'postcss-media-variables';
 
 import config from '../config';
 
 const style = (callback) => {
-   gulp.src(config.src.style)
+   gulp.src(config.src.style, { sourcemaps: config.isDev })
       .pipe(plumber())
-      .pipe(gulpif(config.isDev, sourcemaps.init()))
-      .pipe(scss())
+      .pipe(scss(
+         {
+            includePaths: ['./node_modules/'],
+         },
+      ))
       .pipe(cleanСss({
          format: 'beautify',
          level: { specialComments: true },
       }))
-      .pipe(gulpif(config.isDev, sourcemaps.write()))
-      .pipe(gulp.dest(config.build.css))
+      .pipe(gulp.dest(config.build.css, { sourcemaps: config.isDev }))
       .pipe(gulpif(config.isProd, postcss(
          [
-            assets(
-               {
-                  loadPaths: ['assets/images/'],
-               },
-            ),
+            mqpacker(),
+            media(),
             autoprefixer([
                '> 0.1%',
                'IE 10',
             ]),
-            varcss(),
-            mqpacker(),
+            varcss({
+               preserve: true,
+            }),
+            media(),
          ],
       )))
       .pipe(gulpif(config.isProd, rename({

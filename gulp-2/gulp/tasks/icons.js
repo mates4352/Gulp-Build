@@ -32,7 +32,7 @@ const iconsNoDisable = (callback) => {
                         {
                            removeAttrs: {
                               attrs: [
-                                 'class', 'data-name', 'fill', 'stroke.*',
+                                 'class', 'data-name', 'fill.*', 'stroke.*',
                               ],
                            },
                         },
