@@ -17,5 +17,5 @@
       "empty-line-between-groups": true
     }]
     },
-   "ignoreFiles": ["./dist/**/*", "./src/scss/base/**/*.scss", "./src/scss/abstracts/**/*.scss"]
+   "ignoreFiles": ["./dist/**/*", "./src/scss/base/**/*.scss", "./src/scss/abstracts/**/*.scss", "./src/generated/*"]
 }

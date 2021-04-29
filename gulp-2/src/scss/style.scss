@@ -1,4 +1,5 @@
 // -variable- //
+@import '../generated/smartgrid.scss';
 @import "abstracts/variable/variable";
 
 // -mixins- //
@@ -22,3 +23,13 @@
 
 // -footer- //
 @import "layout/footer";
+
+@media screen and(max-width: 900px) {
+   .header {
+      @include wrapper;
+      width: 500px;
+      height: 500px;
+
+      background-color: #000;
+   }
+}

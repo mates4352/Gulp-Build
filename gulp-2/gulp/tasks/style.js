@@ -11,9 +11,12 @@ import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
 import postcssMedia from 'postcss-media-variables';
 
+import smart from 'smart-grid';
+import importFresh from 'import-fresh';
+
 import config from '../config';
 
-const style = (callback) => {
+export const style = (callback) => {
    gulp.src(config.src.style, { sourcemaps: config.isDev })
       .pipe(plumber())
       .pipe(scss(
@@ -53,4 +56,8 @@ const style = (callback) => {
    callback();
 };
 
-export default style;
+export const smartGridBuild = (callback) => {
+   const smartGridConfig = importFresh(`./${config.SMART_GRID_NAME}`);
+   smart(`${config.src.root}/generated`, smartGridConfig);
+   callback();
+};

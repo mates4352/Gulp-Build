@@ -5,7 +5,7 @@ import server from './gulp/server';
 import clean from './gulp/tasks/clean';
 import script from './gulp/tasks/scripts';
 import html from './gulp/tasks/html';
-import style from './gulp/tasks/style';
+import { style, smartGridBuild } from './gulp/tasks/style';
 import library from './gulp/tasks/library';
 import fonts from './gulp/tasks/fonts';
 import images from './gulp/tasks/images';
@@ -18,6 +18,7 @@ export const build = gulp.series(
    gulp.parallel(
       script,
       html,
+      smartGridBuild,
       style,
       library,
       images,
@@ -31,3 +32,5 @@ export const watch = gulp.series(
    server,
    watchFile,
 );
+
+exports.smartGridBuild = smartGridBuild;
