@@ -12,17 +12,13 @@
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
-html {
-   font-size: 62.5%;
+html{
    -ms-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
+   -moz-text-size-adjust: 100%;
+   -webkit-text-size-adjust: 100%;
 }
 
 body {
-	min-width: var(--min-width);
-
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
 	sans-serif;
@@ -33,7 +29,9 @@ body {
 	font-weight: var(--font-weight);
 	line-height: 1;
 	color: var(--color);
+   min-width: var(--min-width);
 }
+
 
 input,
 button,

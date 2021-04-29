@@ -22,9 +22,3 @@
 
 // -footer- //
 @import "layout/footer";
-
-.header {
-   @media screen and(max-width: var(--xll)) {
-      color: yellow;
-   }
-}

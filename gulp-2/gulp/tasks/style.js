@@ -6,9 +6,10 @@ import cleanСss from 'gulp-clean-css';
 import scss from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import mqpacker from 'css-mqpacker';
-import varcss from 'postcss-css-variables';
+import varcss from 'postcss-custom-properties';
 import autoprefixer from 'autoprefixer';
-import media from 'postcss-media-variables';
+import pxtorem from 'postcss-pxtorem';
+import postcssMedia from 'postcss-media-variables';
 
 import config from '../config';
 
@@ -28,15 +29,17 @@ const style = (callback) => {
       .pipe(gulpif(config.isProd, postcss(
          [
             mqpacker(),
-            media(),
+            postcssMedia(),
             autoprefixer([
                '> 0.1%',
                'IE 10',
             ]),
-            varcss({
-               preserve: true,
+            varcss(),
+            pxtorem({
+               propList: ['*'],
+               mediaQuery: true,
             }),
-            media(),
+            postcssMedia(),
          ],
       )))
       .pipe(gulpif(config.isProd, rename({
