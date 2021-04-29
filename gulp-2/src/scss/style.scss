@@ -1,5 +1,7 @@
-// -variable- //
+// -smartgrid- //
 @import '../generated/smartgrid.scss';
+
+// -variable- //
 @import "abstracts/variable/variable";
 
 // -mixins- //
@@ -9,27 +11,10 @@
 @import "abstracts/elements/elements";
 
 // -base- //
-@import "base/fonts";
-@import "base/nullstyle";
+@import "base/*.scss";
 
 // -components- //
 // @import "components/button.scss";
 
-// -Header- //
-@import "layout/header";
-
-// -Content- //
-// @import "content_.scss";
-
-// -footer- //
-@import "layout/footer";
-
-@media screen and(max-width: 900px) {
-   .header {
-      @include wrapper;
-      width: 500px;
-      height: 500px;
-
-      background-color: #000;
-   }
-}
+// -layout- //
+@import "layout/*.scss";

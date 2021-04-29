@@ -3,6 +3,7 @@ import gulpif from 'gulp-if';
 import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
 import cleanСss from 'gulp-clean-css';
+import sassGlob from 'gulp-sass-glob';
 import scss from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import mqpacker from 'css-mqpacker';
@@ -19,6 +20,7 @@ import config from '../config';
 export const style = (callback) => {
    gulp.src(config.src.style, { sourcemaps: config.isDev })
       .pipe(plumber())
+      .pipe(sassGlob())
       .pipe(scss(
          {
             includePaths: ['./node_modules/'],

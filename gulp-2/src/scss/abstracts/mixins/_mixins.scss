@@ -46,3 +46,20 @@
       font-style: #{$style};
    }
 }
+
+@mixin focus-visible{
+   @if(&){
+      .js-focus-visible &:focus:not(.focus-visible) {
+         @content;
+       }
+   }
+   @else{
+      .js-focus-visible :focus:not(.focus-visible) {
+         @content;
+       }
+   }
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+   outline: none;
+ }
