@@ -4,14 +4,8 @@
       "stylelint-scss"
     ],
     "rules": {
-      "no-empty-source":true,
-      "scss/at-rule-no-unknown": true,
-      "at-rule-no-unknown":null,
       "indentation": 3,
-      "order/properties-order": [],
       "declaration-empty-line-before": null,
-      "font-family-no-missing-generic-family-keyword":null,
-      "no-descending-specificity":null,
       "no-duplicate-selectors":null,
       "plugin/rational-order": [true, {
       "empty-line-between-groups": true
