@@ -7,7 +7,7 @@ const config = {
       html: `${destPath}`,
       js: `${destPath}/js`,
       css: `${destPath}/css`,
-      fonts: `${destPath}/assets/fonts`,
+      fonts: `${destPath}/assets/fonts/`,
       library: `${destPath}/library`,
       images: `${destPath}/assets/images`,
       icons: `${destPath}/assets/icons`,

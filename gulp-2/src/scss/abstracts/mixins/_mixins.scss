@@ -40,8 +40,8 @@
       font-family: $font_name;
       font-display: swap;
       src:
-         url("../../assets/fonts/#{$file_name}.woff") format("woff"),
-         url("../../assets/fonts/#{$file_name}.woff2") format("woff2");
+      url("../assets/fonts/#{$file_name}.woff2") format("woff2"),
+         url("../assets/fonts/#{$file_name}.woff") format("woff");
       font-weight: #{$weight};
       font-style: #{$style};
    }

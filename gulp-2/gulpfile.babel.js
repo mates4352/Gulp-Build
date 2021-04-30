@@ -7,7 +7,7 @@ import script from './gulp/tasks/scripts';
 import html from './gulp/tasks/html';
 import { style, smartGridBuild } from './gulp/tasks/style';
 import library from './gulp/tasks/library';
-import fonts from './gulp/tasks/fonts';
+import { fonts, fontsFile } from './gulp/tasks/fonts';
 import images from './gulp/tasks/images';
 import icons from './gulp/tasks/icons';
 
@@ -25,6 +25,7 @@ export const build = gulp.series(
       icons,
       fonts,
    ),
+   fontsFile,
 );
 
 export const watch = gulp.series(
@@ -33,4 +34,4 @@ export const watch = gulp.series(
    watchFile,
 );
 
-exports.smartGridBuild = smartGridBuild;
+exports.default = watch;

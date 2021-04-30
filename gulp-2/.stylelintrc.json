@@ -6,6 +6,7 @@
     "rules": {
       "indentation": 3,
       "declaration-empty-line-before": null,
+      "at-rule-no-unknown":null,
       "no-duplicate-selectors":null,
       "plugin/rational-order": [true, {
       "empty-line-between-groups": true
