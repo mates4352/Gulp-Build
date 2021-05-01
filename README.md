@@ -36,58 +36,58 @@
 ## Package.json
 ```
 "devDependencies": {
-      "@babel/core": "^7.13.16",                            Офицальный сайт https://babeljs.io/. Npm -- https://www.npmjs.com/package/babel-core
-      "@babel/preset-env": "^7.13.15",                                                           Npm -- https://www.npmjs.com/package/babel-preset-env
-      "@babel/register": "^7.13.16",                                                             Npm -- https://www.npmjs.com/package/babel-register
-      "autoprefixer": "^10.2.5",
-      "babelify": "^10.0.0",
-      "browser-sync": "^2.26.14",
-      "browserify": "^17.0.0",
-      "css-mqpacker": "^7.0.0",
-      "del": "^6.0.0",
-      "eslint": "^7.25.0",
-      "eslint-config-airbnb-base": "^14.2.1",
-      "eslint-plugin-import": "^2.22.1",
-      "gulp": "^4.0.2",
-      "gulp-clean-css": "^4.3.0",
-      "gulp-file-include": "^2.3.0",
-      "gulp-htmlmin": "^5.0.1",
-      "gulp-if": "^3.0.0",
-      "gulp-imagemin": "^7.1.0",
-      "gulp-newer": "^1.4.0",
-      "gulp-plumber": "^1.2.1",
-      "gulp-postcss": "^9.0.0",
-      "gulp-rename": "^2.0.0",
-      "gulp-sass": "^4.1.0",
-      "gulp-sass-glob": "^1.1.0",
-      "gulp-sourcemaps": "^3.0.0",
-      "gulp-svg-sprite": "^1.5.0",
-      "gulp-ttf2woff": "^1.1.1",
-      "gulp-ttf2woff2": "^4.0.1",
-      "gulp-uglify": "^3.0.2",
-      "gulp-webp": "^4.0.1",
-      "gulp-webpcss": "^1.1.1",
-      "husky": "^4.3.8",
-      "imagemin-pngquant": "^9.0.2",
-      "import-fresh": "^3.3.0",
-      "lint-staged": "^10.5.4",
-      "postcss": "^8.2.13",
-      "postcss-custom-properties": "^11.0.0",
-      "postcss-media-variables": "^2.0.1",
-      "postcss-pxtorem": "^6.0.0",
-      "stylelint": "^13.13.0",
-      "stylelint-config-rational-order": "^0.1.2",
-      "stylelint-config-standard": "^22.0.0",
-      "stylelint-order": "^4.1.0",
-      "stylelint-scss": "^3.19.0",
-      "vinyl-buffer": "^1.0.1",
-      "vinyl-source-stream": "^2.0.0"
-},
+      "@babel/core": "^7.13.16",                             Док -- https://www.npmjs.com/package/babel-core
+      "@babel/preset-env": "^7.13.15",                       Док -- https://www.npmjs.com/package/babel-preset-env
+      "@babel/register": "^7.13.16",                         Док -- https://www.npmjs.com/package/babel-register
+      "autoprefixer": "^10.2.5",                             Док -- https://www.npmjs.com/package/autoprefixer
+      "babelify": "^10.0.0",                                 Док -- https://www.npmjs.com/package/babelify
+      "browser-sync": "^2.26.14",                            Док -- https://www.npmjs.com/package/browser-sync
+      "browserify": "^17.0.0",                               Док -- https://www.npmjs.com/package/browserify
+      "css-mqpacker": "^7.0.0",                              Док -- https://www.npmjs.com/package/css-mquery-packer
+      "del": "^6.0.0",                                       Док -- https://www.npmjs.com/package/del
+      "eslint": "^7.25.0",                                   Док -- https://www.npmjs.com/package/eslint
+      "eslint-config-airbnb-base": "^14.2.1",                Док -- https://www.npmjs.com/package/eslint-config-airbnb-base
+      "eslint-plugin-import": "^2.22.1",                     Док -- https://www.npmjs.com/package/eslint-plugin-import
+      "gulp": "^4.0.2",                                      Док -- https://www.npmjs.com/package/gulp
+      "gulp-clean-css": "^4.3.0",                            Док -- https://www.npmjs.com/package/gulp-clean-css
+      "gulp-file-include": "^2.3.0",                         Док -- https://www.npmjs.com/package/gulp-file-include
+      "gulp-htmlmin": "^5.0.1",                              Док -- https://www.npmjs.com/package/gulp-htmlmin
+      "gulp-if": "^3.0.0",                                   Док -- https://www.npmjs.com/package/gulp-if
+      "gulp-imagemin": "^7.1.0",                             Док -- https://www.npmjs.com/package/gulp-imagemin
+      "gulp-newer": "^1.4.0",                                Док -- https://www.npmjs.com/package/gulp-newer
+      "gulp-plumber": "^1.2.1",                              Док -- https://www.npmjs.com/package/gulp-plumber
+      "gulp-postcss": "^9.0.0",                              Док -- https://www.npmjs.com/package/gulp-postcss
+      "gulp-rename": "^2.0.0",                               Док -- https://www.npmjs.com/package/gulp-rename
+      "gulp-sass": "^4.1.0",                                 Док -- https://www.npmjs.com/package/gulp-sass
+      "gulp-sass-glob": "^1.1.0",                            Док -- https://www.npmjs.com/package/gulp-sass-glob
+      "gulp-sourcemaps": "^3.0.0",                           Док -- https://www.npmjs.com/package/gulp-sourcemaps
+      "gulp-svg-sprite": "^1.5.0",                           Док -- https://www.npmjs.com/package/gulp-svg-sprite
+      "gulp-ttf2woff": "^1.1.1",                             Док -- https://www.npmjs.com/package/gulp-ttf2woff
+      "gulp-ttf2woff2": "^4.0.1",                            Док -- https://www.npmjs.com/package/gulp-ttf2woff2
+      "gulp-uglify": "^3.0.2",                               Док -- https://www.npmjs.com/package/gulp-uglify
+      "gulp-webp": "^4.0.1",                                 Док -- https://www.npmjs.com/package/gulp-webp
+      "gulp-webpcss": "^1.1.1",                              Док -- https://www.npmjs.com/package/gulp-webpcss
+      "husky": "^4.3.8",                                     Док -- https://www.npmjs.com/package/husky
+      "imagemin-pngquant": "^9.0.2",                         Док -- https://www.npmjs.com/package/imagemin-pngquant
+      "import-fresh": "^3.3.0",                              Док -- https://www.npmjs.com/package/import-fresh
+      "lint-staged": "^10.5.4",                              Док -- https://www.npmjs.com/package/lint-staged
+      "postcss": "^8.2.13",                                  Док -- https://www.npmjs.com/package/postcss
+      "postcss-custom-properties": "^11.0.0",                Док -- https://www.npmjs.com/package/postcss-custom-properties
+      "postcss-media-variables": "^2.0.1",                   Док -- https://www.npmjs.com/package/postcss-media-variables
+      "postcss-pxtorem": "^6.0.0",                           Док -- https://www.npmjs.com/package/postcss-pxtorem
+      "stylelint": "^13.13.0",                               Док -- https://www.npmjs.com/package/stylelint
+      "stylelint-config-rational-order": "^0.1.2",           Док -- https://www.npmjs.com/package/stylelint-config-rational-order
+      "stylelint-config-standard": "^22.0.0",                Док -- https://www.npmjs.com/package/stylelint-config-standard
+      "stylelint-order": "^4.1.0",                           Док -- https://www.npmjs.com/package/stylelint-order
+      "stylelint-scss": "^3.19.0",                           Док -- https://www.npmjs.com/package/stylelint-scss
+      "vinyl-buffer": "^1.0.1",                              Док -- https://www.npmjs.com/package/vinyl-buffer
+      "vinyl-source-stream": "^2.0.0"                        Док -- https://www.npmjs.com/package/vinyl
+}, 
 "dependencies": {
-      "focus-visible": "^5.2.0",
-      "normalize.css": "^8.0.1",
-      "smart-grid": "^2.1.2",
-      "vanilla-lazyload": "^17.3.1"
+      "focus-visible": "^5.2.0",                             Док -- https://www.npmjs.com/package/focus-visible
+      "normalize.css": "^8.0.1",                             Док -- https://www.npmjs.com/package/normalize.css
+      "smart-grid": "^2.1.2",                                Док -- https://www.npmjs.com/package/smart-grid
+      "vanilla-lazyload": "^17.3.1"                          Док -- https://www.npmjs.com/package/vanilla-lazyload
 }
 ```
 <a name="editorconfig"></a> 
