@@ -1,5 +1,5 @@
 // -smartgrid- //
-@import '../generated/smartgrid.scss';
+@import 'generated/smartgrid.scss';
 
 // -variable- //
 @import "abstracts/variable/variable";
@@ -14,7 +14,7 @@
 @import "base/*.scss";
 
 // -components- //
-// @import "components/button.scss";
+// @import "components/*.scss";
 
 // -layout- //
 @import "layout/*.scss";

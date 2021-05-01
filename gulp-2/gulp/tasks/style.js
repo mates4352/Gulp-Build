@@ -60,6 +60,6 @@ export const style = (callback) => {
 
 export const smartGridBuild = (callback) => {
    const smartGridConfig = importFresh(`./${config.SMART_GRID_NAME}`);
-   smart(`${config.src.root}/generated`, smartGridConfig);
+   smart(`${config.src.root}/scss/generated`, smartGridConfig);
    callback();
 };
