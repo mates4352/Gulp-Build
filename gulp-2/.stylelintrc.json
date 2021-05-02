@@ -1,16 +1,45 @@
 {
    "extends":["stylelint-config-standard","stylelint-config-rational-order"],
    "plugins": [
-      "stylelint-scss"
+      "stylelint-scss",
+      "stylelint-order",
+      "stylelint-config-rational-order/plugin"
     ],
     "rules": {
-      "indentation": 3,
+      "string-quotes": "single",
+      "color-hex-case": "lower",
+      "color-hex-length": "short",
+      "selector-combinator-space-after": "always",
+      "selector-attribute-quotes": "always",
+      "selector-attribute-operator-space-before": "always",
+      "selector-attribute-operator-space-after": "always",
+      "selector-attribute-brackets-space-inside": "always",
+      "declaration-block-trailing-semicolon": "always",
+      "declaration-colon-space-before": "never",
+      "declaration-colon-space-after": "always",
+      "number-leading-zero": "always",
+      "function-url-quotes": "always",
+      "font-weight-notation": "numeric",
+      "font-family-name-quotes": "always-where-recommended",
+      "comment-whitespace-inside": "never",
+      "comment-empty-line-before": "always",
+      "rule-empty-line-before": "always",
+      "selector-pseudo-element-colon-notation": "double",
+      "selector-pseudo-class-parentheses-space-inside": "always",
+      "media-feature-range-operator-space-before": "always",
+      "media-feature-range-operator-space-after": "always",
+      "media-feature-parentheses-space-inside": "always",
+      "media-feature-colon-space-before": "never",
+      "media-feature-colon-space-after": "always",
       "declaration-empty-line-before": null,
-      "at-rule-no-unknown":null,
       "no-duplicate-selectors":null,
+      "order/properties-order": [],
       "plugin/rational-order": [true, {
-      "empty-line-between-groups": true
-    }]
-    },
+      "border-in-box-model": false,
+      "empty-line-between-groups": false
+      }],
+      "indentation": 3,
+      "at-rule-no-unknown":null
+   },
    "ignoreFiles": ["./dist/**/*", "./src/scss/base/**/*.scss", "./src/scss/abstracts/**/*.scss", "./src/generated/*"]
 }
