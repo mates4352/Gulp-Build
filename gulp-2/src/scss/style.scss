@@ -1,20 +1,17 @@
-// -smartgrid- //
-@import 'generated/smartgrid.scss';
-
 // -variable- //
-@import "abstracts/variable/variable";
+@import 'abstracts/variable/variable';
 
 // -mixins- //
-@import "abstracts/mixins/mixins";
+@import 'abstracts/mixins/mixins';
 
 // -elements- //
-@import "abstracts/elements/elements";
+@import 'abstracts/elements/elements';
 
 // -base- //
-@import "base/*.scss";
+@import 'base/*.scss';
 
 // -components- //
-// @import "components/*.scss";
+// @import 'components/*.scss';
 
 // -layout- //
-@import "layout/*.scss";
+@import 'layout/*.scss';

@@ -1,6 +1,6 @@
 import 'focus-visible';
-import LazyLoad from 'vanilla-lazyload';
+import LazyLoadImg from './components/LazyLoadImg'
+import js from './components/js'
 
-const myLazyLoad = new LazyLoad();
-
-myLazyLoad.update();
+LazyLoadImg();
+js();

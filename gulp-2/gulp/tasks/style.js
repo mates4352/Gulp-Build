@@ -10,14 +10,10 @@ import mqpacker from 'css-mqpacker';
 import varcss from 'postcss-custom-properties';
 import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
-import postcssMedia from 'postcss-media-variables';
-
-import smart from 'smart-grid';
-import importFresh from 'import-fresh';
 
 import config from '../config';
 
-export const style = (callback) => {
+const style = (callback) => {
    gulp.src(config.src.style, { sourcemaps: config.isDev })
       .pipe(plumber())
       .pipe(sassGlob())
@@ -34,7 +30,6 @@ export const style = (callback) => {
       .pipe(gulpif(config.isProd, postcss(
          [
             mqpacker(),
-            postcssMedia(),
             autoprefixer([
                '> 0.1%',
                'IE 10',
@@ -44,7 +39,6 @@ export const style = (callback) => {
                propList: ['*'],
                mediaQuery: true,
             }),
-            postcssMedia(),
          ],
       )))
       .pipe(gulpif(config.isProd, rename({
@@ -58,8 +52,4 @@ export const style = (callback) => {
    callback();
 };
 
-export const smartGridBuild = (callback) => {
-   const smartGridConfig = importFresh(`./${config.SMART_GRID_NAME}`);
-   smart(`${config.src.root}/scss/generated`, smartGridConfig);
-   callback();
-};
+export default style;

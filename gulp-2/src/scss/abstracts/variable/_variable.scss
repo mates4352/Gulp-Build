@@ -1,17 +1,19 @@
-:root {
-   --xll: 1440px;
-   --xl: 1100px;
-   --lg: 992px;
-   --md: 768px;
-   --sm: 576px;
-   --xs: 320px;
-}
-
-$color:#000;
+$xll: 1440px;
+$xl: 1100px;
+$lg: 992px;
+$md: 768px;
+$sm: 576px;
+$xs: 320px;
 
 :root {
    --font-family: "Sfuid";
-   --color: #000;
+   --font-family-secondary: "Sfuid";
    --font-weight: 400;
-   --min-width: var(--xs);
+   --min-width: 320px;
+}
+
+:root {
+   --color: #000;
+   --secondary-color: #000;
+   --base-color: #000;
 }

@@ -32,8 +32,6 @@ const config = {
       icons: `${srcPath}/assets/icons/**/*.{png,svg,webp}`,
    },
 
-   SMART_GRID_NAME: 'smartGridConfig.js',
-
    setEnv() {
       this.isProd = process.argv.includes('--prod');
       this.isDev = !this.isProd;
