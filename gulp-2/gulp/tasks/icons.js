@@ -5,7 +5,7 @@ import svgSprite from 'gulp-svg-sprite';
 
 import config from '../config';
 
-const iconsNoDisable = (callback) => {
+const iconsNoDisable = () => (
    gulp.src(config.src.iconsNoDisable)
       .pipe(gulpif(config.isProd, imagemin([
          imagemin.svgo({
@@ -42,11 +42,10 @@ const iconsNoDisable = (callback) => {
             ],
          },
       }))
-      .pipe(gulp.dest(config.build.icons));
-   callback();
-};
+   .pipe(gulp.dest(config.build.icons))
+)
 
-const iconsDisable = (callback) => {
+const iconsDisable = () => (
    gulp.src(config.src.iconsDisable)
       .pipe(gulpif(config.isProd, imagemin([
          imagemin.svgo({
@@ -85,8 +84,7 @@ const iconsDisable = (callback) => {
             },
          },
       }))
-      .pipe(gulp.dest(config.build.icons));
-   callback();
-};
+   .pipe(gulp.dest(config.build.icons))
+)
 
 export default gulp.parallel(iconsDisable, iconsNoDisable);

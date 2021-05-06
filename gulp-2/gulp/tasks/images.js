@@ -7,14 +7,14 @@ import gulpif from 'gulp-if';
 
 import config from '../config';
 
-const images = (callback) => {
+const images = () => (
    gulpif(config.isProd, gulp.src(config.src.images))
       .pipe(gulpif(config.isProd, newer(`${config.build.images}/**/*`)))
       .pipe(gulpif(config.isProd, webp({
          quality: 70,
       })))
-      .pipe(gulpif(config.isProd, gulp.dest(config.build.images)));
-   gulp.src(config.src.images)
+      .pipe(gulpif(config.isProd, gulp.dest(config.build.images)))
+   .pipe(gulp.src(config.src.images))
       .pipe(gulpif(config.isProd, imagemin([
          imagemin.mozjpeg({ quality: 75 }),
          imageminOptipng({ quality: [0.8, 0.9] }),
@@ -22,8 +22,7 @@ const images = (callback) => {
       {
          verbose: true,
       })))
-      .pipe(gulp.dest(config.build.images));
-   callback();
-};
+   .pipe(gulp.dest(config.build.images))
+)
 
 export default images;
