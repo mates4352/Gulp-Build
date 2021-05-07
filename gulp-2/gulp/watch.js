@@ -9,8 +9,6 @@ import config from './config';
 
 const watchFile = (callback) => {
    gulp.watch(config.watch.html, html);
-   gulp.watch(`gulp/tasks/${config.SMART_GRID_NAME}`, smartGridBuild);
-   gulp.watch(`gulp/tasks/${config.SMART_GRID_NAME}`, style);
    gulp.watch(config.watch.style, style);
    gulp.watch(config.watch.js, script);
    gulp.watch(config.watch.library, library);
