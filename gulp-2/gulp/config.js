@@ -20,8 +20,8 @@ const config = {
       style: `${srcPath}/scss/style.scss`,
       fonts: `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
       images: `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
-      iconsDisable: `${srcPath}/assets/icons/disable/*.{png,svg,webp}`,
-      iconsNoDisable: `${srcPath}/assets/icons/noDisable/*.{png,svg,webp}`,
+      iconsMutable: `${srcPath}/assets/icons/mutable/*.{png,svg}`,
+      iconsImmutable: `${srcPath}/assets/icons/immutable/*.{png,svg}`,
    },
    watch: {
       html: `${srcPath}/**/*.html`,
@@ -29,7 +29,7 @@ const config = {
       style: `${srcPath}/scss/**/*.scss`,
       library: `${srcPath}/library/**`,
       images: `${srcPath}/assets/images/**/*.{jpg,png,svg,webp}`,
-      icons: `${srcPath}/assets/icons/**/*.{png,svg,webp}`,
+      icons: `${srcPath}/assets/icons/**/*.{png,svg}`,
    },
 
    setEnv() {

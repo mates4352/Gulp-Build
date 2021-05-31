@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import script from './tasks/scripts';
 import html from './tasks/html';
-import { style, smartGridBuild } from './tasks/style';
+import style from './tasks/style';
 import library from './tasks/library';
 import images from './tasks/fonts';
 import icons from './tasks/icons';

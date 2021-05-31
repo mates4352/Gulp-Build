@@ -3,21 +3,6 @@
    height: $h;
 }
 
-//-----------mixins flex-----------//
-
-@mixin flex-a-j($alignItems,$justifyContent){
-   display: flex;
-   align-items: $alignItems;
-   justify-content: $justifyContent;
-}
-
-@mixin flex-a-j-d($alignItems,$justifyContent,$direction){
-   display: flex;
-   flex-direction: $direction;
-   align-items: $alignItems;
-   justify-content: $justifyContent;
-}
-
 //--------------text----------------//
 
 @mixin font($size:false,$lh:false,$weight:false,$text-align:false) {

@@ -16,7 +16,7 @@ export const fonts = () => (
 )
 
 const cb = () => {}
-const PATH_FONTS_STYLE = 'src/scss/base/_fonts.scss'
+const PATH_FONTS_STYLE = 'src/scss/base/fonts.scss'
 const PATH__FONTS = 'src/assets/fonts'
 
 export const fontsFile = (params) => {

@@ -7,7 +7,6 @@ import sassGlob from 'gulp-sass-glob';
 import scss from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import mqpacker from 'css-mqpacker';
-import varcss from 'postcss-custom-properties';
 import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
 
@@ -32,9 +31,8 @@ const style = () => (
             mqpacker(),
             autoprefixer([
                '> 0.1%',
-               'IE 10',
+               'IE 11',
             ]),
-            varcss(),
             pxtorem({
                propList: ['*'],
                mediaQuery: true,

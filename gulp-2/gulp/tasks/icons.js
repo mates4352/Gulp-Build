@@ -5,8 +5,8 @@ import svgSprite from 'gulp-svg-sprite';
 
 import config from '../config';
 
-const iconsNoDisable = () => (
-   gulp.src(config.src.iconsNoDisable)
+const mutable = () => (
+   gulp.src(config.src.iconsMutable)
       .pipe(gulpif(config.isProd, imagemin([
          imagemin.svgo({
             plugins: [
@@ -21,7 +21,7 @@ const iconsNoDisable = () => (
       .pipe(svgSprite({
          mode: {
             symbol: {
-               sprite: 'spriteNoDisable.svg',
+               sprite: 'mutable.svg',
             },
          },
          shape: {
@@ -45,8 +45,8 @@ const iconsNoDisable = () => (
    .pipe(gulp.dest(config.build.icons))
 )
 
-const iconsDisable = () => (
-   gulp.src(config.src.iconsDisable)
+const immutable = () => (
+   gulp.src(config.src.iconsImmutable)
       .pipe(gulpif(config.isProd, imagemin([
          imagemin.svgo({
             plugins: [
@@ -61,30 +61,11 @@ const iconsDisable = () => (
       .pipe(svgSprite({
          mode: {
             symbol: {
-               sprite: 'spriteDisable.svg',
-            },
-            shape: {
-               transform: [
-                  {
-                     svgo: {
-                        plugins: [
-                           {
-                              removeAttrs: {
-                                 attrs: [
-                                    'class', 'data-name',
-                                 ],
-                              },
-                              removeUselessStrokeAndFill: true,
-                              inlineStyles: true,
-                           },
-                        ],
-                     },
-                  },
-               ],
+               sprite: 'immutable.svg',
             },
          },
       }))
    .pipe(gulp.dest(config.build.icons))
 )
 
-export default gulp.parallel(iconsDisable, iconsNoDisable);
+export default gulp.parallel(mutable, immutable);

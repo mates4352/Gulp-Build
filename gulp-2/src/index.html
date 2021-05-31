@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
-   @@include('./html/layout/_head.html',{"name":"title"})
+   @@include('./html/base/head.html',{"name":"title"})
 <body>
-   @@include('./html/layout/_header.html')
-   @@include('./html/layout/_footer.html')
+   @@include('./html/layout/header.html')
 
 
-   <script src="./js/main.js"></script>
+
+   @@include('./html/layout/footer.html')
+
+   @@include('./html/base/js.html')
 </body>
 </html>
