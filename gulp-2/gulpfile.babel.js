@@ -14,7 +14,6 @@ import icons from './gulp/tasks/icons';
 config.setEnv();
 
 export const build = gulp.series(
-   clean,
    gulp.parallel(
       script,
       html,
@@ -33,4 +32,6 @@ export const watch = gulp.series(
    watchFile,
 );
 
+// Перед запуском 1-gulp(для быстрой работы) 2-gulp --prod(для продакшена) используем gulp clean(для очистки)
+exports.clean = clean;
 exports.default = watch;

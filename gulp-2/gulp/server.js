@@ -14,7 +14,7 @@ const server = (callback) => {
          config.watch.images,
          config.watch.icons,
       ],
-      open: true,
+      open: false,
       notify: false,
    });
    callback();

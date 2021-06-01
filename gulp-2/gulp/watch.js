@@ -3,7 +3,7 @@ import script from './tasks/scripts';
 import html from './tasks/html';
 import style from './tasks/style';
 import library from './tasks/library';
-import images from './tasks/fonts';
+import images from './tasks/images';
 import icons from './tasks/icons';
 import config from './config';
 
