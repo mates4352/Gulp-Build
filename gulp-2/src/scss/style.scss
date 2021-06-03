@@ -1,3 +1,9 @@
+// -bootstrap- //
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+@import 'node_modules/bootstrap/scss/grid';
+
 // -variable- //
 @import 'abstracts/variable/variable';
 
@@ -8,7 +14,7 @@
 @import 'base/*.scss';
 
 // -components- //
-// @import 'components/*.scss';
+@import 'components/*.scss';
 
 // -layout- //
 @import 'layout/*.scss';

@@ -64,6 +64,7 @@
       "vinyl-source-stream": "^2.0.0"
    },
    "dependencies": {
+      "bootstrap": "^4.6.0",
       "normalize.css": "^8.0.1",
       "vanilla-lazyload": "^17.3.1"
    }
