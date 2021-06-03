@@ -8,7 +8,7 @@ import gulpif from 'gulp-if';
 import config from '../config';
 import rename from 'gulp-rename';
 
-const script = () => (
+const script = (cb) => {
    browserify(config.src.js, { debug: true })
       .transform('babelify', { presets: ['@babel/preset-env'] })
       .bundle()
@@ -21,7 +21,8 @@ const script = () => (
          extname: '.js',
       })))
       .pipe(gulpif(config.isDev, sourcemaps.write()))
-   .pipe(gulp.dest(config.build.js))
-)
+      .pipe(gulp.dest(config.build.js))
+   cb();
+}
 
 export default script;

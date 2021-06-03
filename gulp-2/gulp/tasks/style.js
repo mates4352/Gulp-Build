@@ -12,7 +12,7 @@ import pxtorem from 'postcss-pxtorem';
 
 import config from '../config';
 
-const style = () => (
+const style = (cb) => {
    gulp.src(config.src.style, { sourcemaps: config.isDev })
       .pipe(plumber())
       .pipe(sassGlob())
@@ -47,6 +47,7 @@ const style = () => (
          level: { 2: { specialComments: 0 } },
       })))
    .pipe(gulpif(config.isProd, gulp.dest(config.build.css)))
-)
+   cb();
+}
 
 export default style;

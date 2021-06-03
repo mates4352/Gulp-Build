@@ -6,7 +6,7 @@ import rename from 'gulp-rename';
 import plumber from 'gulp-plumber';
 import config from '../config';
 
-const html = () => (
+const html = (cb) => {
    gulp.src(config.src.html)
       .pipe(plumber())
       .pipe(include())
@@ -20,6 +20,7 @@ const html = () => (
          extname: '.html',
       })))
    .pipe(gulpif(config.isProd, gulp.dest(config.build.html)))
-)
+   cb();
+}
 
 export default html;

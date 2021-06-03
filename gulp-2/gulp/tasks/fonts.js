@@ -5,7 +5,7 @@ import ttf2woff2 from 'gulp-ttf2woff2';
 
 import config from '../config';
 
-export const fonts = () => (
+export const fonts = (cb) => {
    gulp.src(config.src.fonts)
       .pipe(ttf2woff2())
       .pipe(gulp.dest(config.build.fonts))
@@ -13,7 +13,8 @@ export const fonts = () => (
    .pipe(gulp.src(config.src.fonts))
       .pipe(ttf2woff())
       .pipe(gulp.dest(config.build.fonts))
-)
+   cb();
+}
 
 const cb = () => {}
 const PATH_FONTS_STYLE = 'src/scss/base/fonts.scss'
