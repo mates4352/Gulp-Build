@@ -13,7 +13,7 @@ const purgecss = (cb) => {
          }
       ))
       .pipe(gulp.dest('./dist/css'))
-      cb()
+   cb()
 }
 
 export default purgecss;

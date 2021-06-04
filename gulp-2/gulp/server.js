@@ -1,7 +1,7 @@
 import browserSync from 'browser-sync';
 import config from './config';
 
-const server = (callback) => {
+const server = (сb) => {
    browserSync.create().init({
       server: {
          baseDir: config.build.root,
@@ -16,7 +16,7 @@ const server = (callback) => {
       open: false,
       notify: false,
    });
-   callback();
+   сb();
 };
 
 export default server;
