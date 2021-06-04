@@ -10,7 +10,6 @@ const server = (callback) => {
          config.watch.html,
          config.watch.style,
          config.watch.js,
-         config.watch.library,
          config.watch.images,
          config.watch.icons,
       ],

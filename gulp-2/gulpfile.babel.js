@@ -6,10 +6,10 @@ import clean from './gulp/tasks/clean';
 import script from './gulp/tasks/scripts';
 import html from './gulp/tasks/html';
 import style from './gulp/tasks/style';
-import library from './gulp/tasks/library';
 import { fonts, fontsFile } from './gulp/tasks/fonts';
 import images from './gulp/tasks/images';
 import icons from './gulp/tasks/icons';
+import purgecss from './gulp/tasks/purgecss'
 
 config.setEnv();
 
@@ -18,7 +18,6 @@ export const build = gulp.series(
       script,
       html,
       style,
-      library,
       images,
       icons,
       fonts,
@@ -34,4 +33,5 @@ export const watch = gulp.series(
 
 // Перед запуском 1-gulp(для быстрой работы) 2-gulp --prod(для продакшена) используем gulp clean(для очистки)
 exports.clean = clean;
+exports.purgecss = purgecss
 exports.default = watch;

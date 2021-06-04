@@ -41,5 +41,5 @@
       "indentation": 3,
       "at-rule-no-unknown":null
    },
-   "ignoreFiles": ["./dist/**/*", "./src/scss/base/**/*.scss", "./src/scss/abstracts/**/*.scss", "./src/generated/*"]
+   "ignoreFiles": ["./dist/**/*", "./src/scss/base/**/*.scss","./src/scss/library/**/*.scss","./src/scss/abstracts/**/*.scss"]
 }
