@@ -22,8 +22,4 @@ $grid-columns:                24;
 $grid-gutter-width:           30px;
 
 // -bootstrap- //
-@import 'node_modules/bootstrap/scss/functions';
-@import 'node_modules/bootstrap/scss/variables';
-@import 'node_modules/bootstrap/scss/mixins';
-@import 'node_modules/bootstrap/scss/grid';
-@import "node_modules/bootstrap/scss/utilities/flex";
+@import 'bootstrap/scss/bootstrap';
