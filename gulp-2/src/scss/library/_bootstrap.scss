@@ -23,3 +23,14 @@ $grid-gutter-width:           30px;
 
 // -bootstrap- //
 @import 'bootstrap/scss/bootstrap';
+
+
+.container {
+   padding-left: 0;
+   padding-right: 0;
+
+   @media screen and (max-width:320px) {
+      padding-left: $grid-gutter-width / 2;
+      padding-right: $grid-gutter-width / 2;
+   }
+}

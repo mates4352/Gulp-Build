@@ -1,9 +1,8 @@
 import del from 'del';
 import config from '../config';
 
-const clean = (cb) => {
-   del(config.build.root);
-   cb();
-}
+const clean = () => (
+   del(config.build.root)
+)
 
 export default clean;

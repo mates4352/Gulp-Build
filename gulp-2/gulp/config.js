@@ -2,6 +2,7 @@ const srcPath = 'src';
 const destPath = 'dist';
 
 const config = {
+
    build: {
       root: destPath,
       html: `${destPath}`,
@@ -11,6 +12,7 @@ const config = {
       images: `${destPath}/assets/images`,
       icons: `${destPath}/assets/icons`,
    },
+
    src: {
       root: srcPath,
       html: `${srcPath}/*.html`,
@@ -21,6 +23,7 @@ const config = {
       iconsMutable: `${srcPath}/assets/icons/mutable/*.{png,svg}`,
       iconsImmutable: `${srcPath}/assets/icons/immutable/*.{png,svg}`,
    },
+
    watch: {
       html: `${srcPath}/**/*.html`,
       js: `${srcPath}/js/**/*.js`,
@@ -29,9 +32,15 @@ const config = {
       icons: `${srcPath}/assets/icons/**/*.{png,svg}`,
    },
 
+   concat: [
+      `${srcPath}/js/main.js`,
+      // `${srcPath}/js/components/main.js`,
+   ],
+
    setEnv() {
       this.isProd = process.argv.includes('--prod');
       this.isDev = !this.isProd;
    },
+
 };
 export default config;

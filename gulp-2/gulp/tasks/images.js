@@ -7,7 +7,7 @@ import gulpif from 'gulp-if';
 
 import config from '../config';
 
-const images = (cb) => {
+const images = () => (
    gulp.src(config.src.images)
    .pipe(newer(config.build.images))
    .pipe(gulpif(config.isProd, imagemin([
@@ -23,7 +23,6 @@ const images = (cb) => {
          quality: 70,
       })))
    .pipe(gulpif(config.isProd, gulp.dest(config.build.images)))
-   cb();
-}
+)
 
 export default images;

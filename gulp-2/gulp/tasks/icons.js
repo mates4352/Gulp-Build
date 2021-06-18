@@ -5,7 +5,7 @@ import svgSprite from 'gulp-svg-sprite';
 
 import config from '../config';
 
-const mutable = (cb) => {
+const mutable = () => (
    gulp.src(config.src.iconsMutable)
       .pipe(gulpif(config.isProd, imagemin([
          imagemin.svgo({
@@ -15,9 +15,9 @@ const mutable = (cb) => {
             ],
          }),
       ],
-      {
-         verbose: true,
-      })))
+         {
+            verbose: true,
+         })))
       .pipe(svgSprite({
          mode: {
             symbol: {
@@ -42,11 +42,10 @@ const mutable = (cb) => {
             ],
          },
       }))
-   .pipe(gulp.dest(config.build.icons))
-   cb();
-}
+      .pipe(gulp.dest(config.build.icons))
+)
 
-const immutable = (cb) => {
+const immutable = () => (
    gulp.src(config.src.iconsImmutable)
       .pipe(gulpif(config.isProd, imagemin([
          imagemin.svgo({
@@ -56,9 +55,9 @@ const immutable = (cb) => {
             ],
          }),
       ],
-      {
-         verbose: true,
-      })))
+         {
+            verbose: true,
+         })))
       .pipe(svgSprite({
          mode: {
             symbol: {
@@ -66,8 +65,7 @@ const immutable = (cb) => {
             },
          },
       }))
-   .pipe(gulp.dest(config.build.icons))
-   cb();
-}
+      .pipe(gulp.dest(config.build.icons))
+)
 
 export default gulp.parallel(mutable, immutable);

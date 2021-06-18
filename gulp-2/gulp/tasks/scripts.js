@@ -1,20 +1,19 @@
 import gulp from 'gulp';
-import browserify from 'browserify';
-import source from 'vinyl-source-stream';
-import buffer from 'vinyl-buffer';
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import gulpif from 'gulp-if';
 import config from '../config';
 import rename from 'gulp-rename';
+import babel from 'gulp-babel';
+import concat from 'gulp-concat';
+const script = () => (
 
-const script = (cb) => {
-   browserify(config.src.js, { debug: true })
-      .transform('babelify', { presets: ['@babel/preset-env'] })
-      .bundle()
-      .pipe(source('main.js'))
-      .pipe(buffer())
+  gulp.src(config.concat)
       .pipe(gulpif(config.isDev, sourcemaps.init({ loadMaps: true })))
+      .pipe(babel({
+         presets: ["@babel/preset-env"]
+      }))
+      .pipe(concat('main.js'))
       .pipe(gulpif(config.isProd, uglify()))
       .pipe(gulpif(config.isProd, rename({
          suffix: '.min',
@@ -22,7 +21,7 @@ const script = (cb) => {
       })))
       .pipe(gulpif(config.isDev, sourcemaps.write()))
       .pipe(gulp.dest(config.build.js))
-   cb();
-}
+
+)
 
 export default script;

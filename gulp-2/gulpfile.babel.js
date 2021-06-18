@@ -33,5 +33,5 @@ export const watch = gulp.series(
 
 // Перед запуском 1-gulp(для быстрой работы) 2-gulp --prod(для продакшена) используем gulp clean(для очистки)
 exports.clean = clean;
-exports.purgecss = purgecss
+exports.purgecss = purgecss;
 exports.default = watch;
