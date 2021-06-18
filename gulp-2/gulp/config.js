@@ -4,6 +4,7 @@ const destPath = 'dist';
 const config = {
 
    build: {
+
       root: destPath,
       html: `${destPath}`,
       js: `${destPath}/js`,
@@ -14,6 +15,7 @@ const config = {
    },
 
    src: {
+
       root: srcPath,
       html: `${srcPath}/*.html`,
       js: `${srcPath}/js/main.js`,
@@ -22,19 +24,23 @@ const config = {
       images: `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
       iconsMutable: `${srcPath}/assets/icons/mutable/*.{png,svg}`,
       iconsImmutable: `${srcPath}/assets/icons/immutable/*.{png,svg}`,
+
    },
 
    watch: {
+
       html: `${srcPath}/**/*.html`,
       js: `${srcPath}/js/**/*.js`,
       style: `${srcPath}/scss/**/*.scss`,
       images: `${srcPath}/assets/images/**/*.{jpg,png,svg,webp}`,
       icons: `${srcPath}/assets/icons/**/*.{png,svg}`,
+
    },
 
    concat: [
       `${srcPath}/js/main.js`,
-      // `${srcPath}/js/components/main.js`,
+      // `${srcPath}/js/components/.js`,
+      // `${srcPath}/js/library/.js`,
    ],
 
    setEnv() {
