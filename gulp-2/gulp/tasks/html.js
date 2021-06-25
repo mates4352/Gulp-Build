@@ -10,7 +10,6 @@ const html = () => (
    gulp.src(config.src.html)
       .pipe(plumber())
       .pipe(include())
-   .pipe(gulp.dest(config.build.html))
       .pipe(gulpif(config.isProd, htmlmin({
          collapseWhitespace: true,
          removeComments: true,
@@ -19,7 +18,7 @@ const html = () => (
          suffix: '.min',
          extname: '.html',
       })))
-   .pipe(gulpif(config.isProd, gulp.dest(config.build.html)))
+   .pipe(gulp.dest(config.build.html))
 )
 
 export default html;

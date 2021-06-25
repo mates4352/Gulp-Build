@@ -21,11 +21,10 @@ const style = () => (
             includePaths: ['./node_modules/'],
          },
       ))
-      .pipe(cleanСss({
+      .pipe(gulp.if(config.isDev, cleanСss({
          format: 'beautify',
          level: { specialComments: true },
-      }))
-      .pipe(gulp.dest(config.build.css, { sourcemaps: config.isDev }))
+      })))
       .pipe(gulpif(config.isProd, postcss(
          [
             mqpacker(),
@@ -46,7 +45,7 @@ const style = () => (
       .pipe(gulpif(config.isProd, cleanСss({
          level: { 2: { specialComments: 0 } },
       })))
-   .pipe(gulpif(config.isProd, gulp.dest(config.build.css)))
+   .pipe(gulp.dest(config.build.css, { sourcemaps: config.isDev }))
 )
 
 export default style;
