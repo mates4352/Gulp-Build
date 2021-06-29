@@ -27,8 +27,10 @@ export const build = gulp.series(
 
 export const watch = gulp.series(
    build,
-   server,
-   watchFile,
+   gulp.parallel(
+      server,
+      watchFile,
+   )
 );
 
 // Перед запуском 1-gulp(для быстрой работы) 2-gulp --prod(для продакшена) используем gulp clean(для очистки)

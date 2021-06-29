@@ -6,7 +6,8 @@ import rename from 'gulp-rename';
 import plumber from 'gulp-plumber';
 import config from '../config';
 
-const html = () => (
+const html = (cb) => {
+
    gulp.src(config.src.html)
       .pipe(plumber())
       .pipe(include())
@@ -18,7 +19,9 @@ const html = () => (
          suffix: '.min',
          extname: '.html',
       })))
-   .pipe(gulp.dest(config.build.html))
-)
+      .pipe(gulp.dest(config.build.html))
+   cb();
+   
+}
 
 export default html;

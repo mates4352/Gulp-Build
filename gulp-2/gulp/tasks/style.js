@@ -12,7 +12,8 @@ import pxtorem from 'postcss-pxtorem';
 
 import config from '../config';
 
-const style = () => (
+const style = (cb) => {
+
    gulp.src(config.src.style, { sourcemaps: config.isDev })
       .pipe(plumber())
       .pipe(sassGlob())
@@ -21,7 +22,7 @@ const style = () => (
             includePaths: ['./node_modules/'],
          },
       ))
-      .pipe(gulp.if(config.isDev, cleanСss({
+      .pipe(gulpif(config.isDev, cleanСss({
          format: 'beautify',
          level: { specialComments: true },
       })))
@@ -45,7 +46,9 @@ const style = () => (
       .pipe(gulpif(config.isProd, cleanСss({
          level: { 2: { specialComments: 0 } },
       })))
-   .pipe(gulp.dest(config.build.css, { sourcemaps: config.isDev }))
-)
+      .pipe(gulp.dest(config.build.css, { sourcemaps: config.isDev }))
+   cb();
+
+}
 
 export default style;

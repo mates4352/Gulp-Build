@@ -12,6 +12,7 @@ const config = {
       fonts: `${destPath}/assets/fonts/`,
       images: `${destPath}/assets/images`,
       icons: `${destPath}/assets/icons`,
+
    },
 
    src: {
@@ -38,14 +39,18 @@ const config = {
    },
 
    concat: [
+
       `${srcPath}/js/main.js`,
       // `${srcPath}/js/components/.js`,
       // `${srcPath}/js/library/.js`,
+      
    ],
 
    setEnv() {
+
       this.isProd = process.argv.includes('--prod');
       this.isDev = !this.isProd;
+
    },
 
 };

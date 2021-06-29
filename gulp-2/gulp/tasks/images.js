@@ -9,20 +9,21 @@ import config from '../config';
 
 const images = () => (
    gulp.src(config.src.images)
-   .pipe(newer(config.build.images))
-   .pipe(gulpif(config.isProd, imagemin([
-      imagemin.mozjpeg({ quality: 75 }),
-      imageminOptipng({ quality: [0.8, 0.9] }),
-   ],
-   {
-      verbose: true,
-   })))
-   .pipe(gulp.dest(config.build.images))
-      .pipe(gulpif(config.isProd, gulp.src(config.src.images)))
-      .pipe(gulpif(config.isProd, webp({
-         quality: 70,
-      })))
-   .pipe(gulpif(config.isProd, gulp.dest(config.build.images)))
+      .pipe(newer(config.build.images))
+      .pipe(gulpif(config.isProd, imagemin(
+         [
+            imagemin.mozjpeg({ quality: 75 }),
+            imageminOptipng({ quality: [0.8, 0.9] }),
+         ],
+         {
+            verbose: true,
+         })))
+      .pipe(gulp.dest(config.build.images))
+      .pipe(gulp.src(config.src.images)))
+   .pipe(gulpif(config.isProd, webp({
+      quality: 70,
+   }))
+      .pipe(gulp.dest(config.build.images))
 )
 
 export default images;

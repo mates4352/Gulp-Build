@@ -20,6 +20,7 @@ const PATH_FONTS_STYLE = 'src/scss/base/_fonts.scss'
 const PATH__FONTS = 'src/assets/fonts'
 
 export const fontsFile = (params) => {
+
    const file_content = fs.readFileSync(PATH_FONTS_STYLE);
    if (file_content == '' || file_content == false) {
       fs.writeFile(PATH_FONTS_STYLE, '', cb);
@@ -38,5 +39,6 @@ export const fontsFile = (params) => {
       },params())
    }
    params();
+   
 }
 

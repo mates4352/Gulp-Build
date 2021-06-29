@@ -6,7 +6,8 @@ import config from '../config';
 import rename from 'gulp-rename';
 import babel from 'gulp-babel';
 import concat from 'gulp-concat';
-const script = () => (
+
+const script = (cb) => {
 
   gulp.src(config.concat)
       .pipe(gulpif(config.isDev, sourcemaps.init({ loadMaps: true })))
@@ -21,7 +22,8 @@ const script = () => (
       })))
       .pipe(gulpif(config.isDev, sourcemaps.write()))
       .pipe(gulp.dest(config.build.js))
+   cb();
 
-)
+}
 
 export default script;
