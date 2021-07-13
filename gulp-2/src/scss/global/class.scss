@@ -1,3 +1,4 @@
+
 .container {
    @if $min-max == min {
       width: 100%;
@@ -7,6 +8,8 @@
    @if $min-max == max {
       max-width: map-get($container-max-widths, xl );
    }
+
+   @extend %container;
 
    @include media(sm) {
       padding: 0 15px;

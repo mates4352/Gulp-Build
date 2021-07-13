@@ -13,6 +13,9 @@
 // -global-class- //
 @import 'global/class.scss';
 
+// -extend- //
+@import 'abstracts/extend/extend';
+
 // -components- //
 @import 'components/*.scss';
 

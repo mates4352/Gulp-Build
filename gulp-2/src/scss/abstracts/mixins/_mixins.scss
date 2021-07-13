@@ -26,26 +26,6 @@
    }
 }
 
-@if $min-max == min {
-   @each $breakpoint-name, $breakpoint-value in $grid-breakpoints-min {
-      @media only screen and (#{$min-max}-width: $breakpoint-value) {
-         .container {
-            max-width: #{map-get( $container-max-widths, $breakpoint-name )};
-         }
-      }
-   }
-}
-
-@else if $min-max == max {
-   @each $breakpoint-name, $breakpoint-value in $grid-breakpoints-max {
-      @media only screen and (#{$min-max}-width: $breakpoint-value) {
-         .container {
-            max-width: #{map-get( $container-max-widths, $breakpoint-name )};
-         }
-      }
-   }
-}
-
 @mixin media($breakpoint) {
 
    @if $min-max == min {
