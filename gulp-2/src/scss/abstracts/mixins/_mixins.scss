@@ -26,25 +26,58 @@
    }
 }
 
-@each $breakpoint-name, $breakpoint-value in $grid-breakpoints {
-   @media only screen and (#{$min-max}-width: $breakpoint-value) {
-      .container-#{$breakpoint-name},
-      .container {
-         max-width: #{map-get( $container-max-widths, $breakpoint-name )};
+@if $min-max == min {
+   @each $breakpoint-name, $breakpoint-value in $grid-breakpoints-min {
+      @media only screen and (#{$min-max}-width: $breakpoint-value) {
+         .container {
+            max-width: #{map-get( $container-max-widths, $breakpoint-name )};
+         }
+      }
+   }
+}
+
+@else if $min-max == max {
+   @each $breakpoint-name, $breakpoint-value in $grid-breakpoints-max {
+      @media only screen and (#{$min-max}-width: $breakpoint-value) {
+         .container {
+            max-width: #{map-get( $container-max-widths, $breakpoint-name )};
+         }
       }
    }
 }
 
 @mixin media($breakpoint) {
-   @if map-has-key($grid-breakpoints, $breakpoint) {
-      @media only screen and (#{$min-max}-width: #{map-get( $grid-breakpoints, $breakpoint)}) {
-         @content;
+
+   @if $min-max == min {
+
+      @if map-has-key($grid-breakpoints-min, $breakpoint) {
+         @media only screen and (#{$min-max}-width: #{map-get( $grid-breakpoints-min, $breakpoint)}) {
+            @content;
+         }
       }
+
+      @else {
+         @media only screen and (#{$min-max}-width: $breakpoint) {
+            @content;
+         }
+      }
+
    }
 
-   @else {
-      @media only screen and (#{$min-max}-width: $breakpoint) {
-         @content;
+   @else if $min-max == max {
+
+      @if map-has-key($grid-breakpoints-min, $breakpoint) {
+         @media only screen and (#{$min-max}-width: #{map-get( $grid-breakpoints-max, $breakpoint)}) {
+            @content;
+         }
       }
+
+      @else {
+         @media only screen and (#{$min-max}-width: $breakpoint) {
+            @content;
+         }
+      }
+
    }
+
 }

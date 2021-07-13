@@ -1,11 +1,17 @@
 // -variable- //
 @import 'abstracts/variable/variable';
 
+// -global-customization- //
+@import 'global/customization';
+
 // -mixins- //
 @import 'abstracts/mixins/mixins';
 
 // -base- //
 @import 'base/*.scss';
+
+// -global-class- //
+@import 'global/class.scss';
 
 // -components- //
 @import 'components/*.scss';

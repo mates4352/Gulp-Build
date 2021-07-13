@@ -1,0 +1,27 @@
+$min-max:max;
+
+$grid-breakpoints-max: (
+   xl: 1200px - 0.2px,
+   lg: 992px - 0.2px,
+   md: 768px - 0.2px,
+   sm: 576px - 0.2px,
+);
+
+$grid-breakpoints-min: (
+   sm: 576px,
+   md: 768px,
+   lg: 992px,
+   xl: 1200px
+);
+
+$container-max-widths: (
+   sm: 540px,
+   md: 720px,
+   lg: 960px,
+   xl: 1100px
+);
+
+$font-family: "font-family";
+$font-family-secondary: "font-family";
+$font-weight: 400;
+$min-width: 320px;
