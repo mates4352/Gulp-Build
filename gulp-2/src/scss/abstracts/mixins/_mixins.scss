@@ -6,19 +6,13 @@
 //--------------text----------------//
 
 @mixin font($size:false,$lh:false,$weight:false,$text-align:false) {
-   @if $size { font-size: $size; }
-   @if $lh { line-height: $lh; }
-   @if $weight { font-weight: $weight; }
-   @if $text-align { text-align: $text-align; }
+   font-size: $size;
+   line-height: $lh;
+   font-weight: $weight;
+   text-align: $text-align;
 }
 
 //----------------media------------------//
-
-@mixin media($minmax, $media) {
-   @media only screen and (#{$minmax}-width: $media) {
-      @content;
-   }
-}
 
 @mixin font-face($font_name, $file_name, $weight, $style) {
    @font-face {
@@ -29,5 +23,27 @@
          url("../assets/fonts/#{$file_name}.woff") format("woff");
       font-weight: #{$weight};
       font-style: #{$style};
+   }
+}
+
+@each $breakpoint-name, $breakpoint-value in $grid-breakpoints {
+   @media (#{$min-max}-width: $breakpoint-value) {
+      .container {
+         max-width: #{map-get( $container-max-widths, $breakpoint-name )};
+      }
+   }
+}
+
+@mixin media($breakpoint) {
+   @if map-has-key($grid-breakpoints, $breakpoint) {
+      @media (#{$min-max}-width: #{map-get( $grid-breakpoints, $breakpoint)}) {
+         @content;
+      }
+   }
+
+   @else {
+      @media only screen and (#{$min-max}-width: $breakpoint) {
+         @content;
+      }
    }
 }

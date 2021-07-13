@@ -9,7 +9,7 @@
    background-color: transparent;
    border: none;
 
-   @include media(max,$lg) {
+   @include media(lg) {
       display: block;
    }
 }
