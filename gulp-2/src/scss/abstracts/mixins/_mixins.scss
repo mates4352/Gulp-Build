@@ -27,7 +27,7 @@
 }
 
 @each $breakpoint-name, $breakpoint-value in $grid-breakpoints {
-   @media (#{$min-max}-width: $breakpoint-value) {
+   @media only screen and (#{$min-max}-width: $breakpoint-value) {
       .container {
          max-width: #{map-get( $container-max-widths, $breakpoint-name )};
       }
@@ -36,7 +36,7 @@
 
 @mixin media($breakpoint) {
    @if map-has-key($grid-breakpoints, $breakpoint) {
-      @media (#{$min-max}-width: #{map-get( $grid-breakpoints, $breakpoint)}) {
+      @media only screen and (#{$min-max}-width: #{map-get( $grid-breakpoints, $breakpoint)}) {
          @content;
       }
    }
