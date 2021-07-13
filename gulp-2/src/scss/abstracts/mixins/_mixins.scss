@@ -28,6 +28,7 @@
 
 @each $breakpoint-name, $breakpoint-value in $grid-breakpoints {
    @media only screen and (#{$min-max}-width: $breakpoint-value) {
+      .container-#{$breakpoint-name},
       .container {
          max-width: #{map-get( $container-max-widths, $breakpoint-name )};
       }
