@@ -6,7 +6,7 @@
    margin: 0 auto;
 
    @if $min-max == max {
-      max-width: map-get($container-max-widths, xl );
+      max-width: map-get($container-max-widths, 'xl');
    }
 
    @extend %container;
