@@ -10,6 +10,7 @@ import { fonts, fontsFile } from './gulp/tasks/fonts';
 import images from './gulp/tasks/images';
 import icons from './gulp/tasks/icons';
 import purgecss from './gulp/tasks/purgecss'
+import fontCss from './gulp/tasks/fontsCss'
 
 config.setEnv();
 
@@ -23,6 +24,7 @@ export const build = gulp.series(
       fonts,
    ),
    fontsFile,
+   fontCss,
 );
 
 export const watch = gulp.series(

@@ -8,7 +8,6 @@ import scss from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import mqpacker from 'css-mqpacker';
 import autoprefixer from 'autoprefixer';
-import pxtorem from 'postcss-pxtorem';
 
 import config from '../config';
 
@@ -33,10 +32,6 @@ const style = (cb) => {
                '> 0.1%',
                'IE 11',
             ]),
-            pxtorem({
-               propList: ['*'],
-               mediaQuery: true,
-            }),
          ],
       )))
       .pipe(gulpif(config.isProd, rename({

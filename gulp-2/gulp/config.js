@@ -21,6 +21,7 @@ const config = {
       html: `${srcPath}/*.html`,
       js: `${srcPath}/js/main.js`,
       style: `${srcPath}/scss/style.scss`,
+      fontsCss: `${srcPath}/scss/base/fontsCss.scss`,
       fonts: `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
       images: `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
       iconsMutable: `${srcPath}/assets/icons/mutable/*.{png,svg}`,
@@ -43,7 +44,7 @@ const config = {
       `${srcPath}/js/main.js`,
       // `${srcPath}/js/components/.js`,
       // `${srcPath}/js/library/.js`,
-      
+
    ],
 
    setEnv() {

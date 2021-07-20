@@ -27,37 +27,40 @@
 }
 
 @mixin media($breakpoint) {
-
    @if $min-max == min {
-
       @if map-has-key($grid-breakpoints-min, $breakpoint) {
+
          @media only screen and (#{$min-max}-width: #{map-get( $grid-breakpoints-min, $breakpoint)}) {
             @content;
          }
+
       }
 
       @else {
+
          @media only screen and (#{$min-max}-width: $breakpoint) {
             @content;
          }
-      }
 
+      }
    }
 
    @else if $min-max == max {
-
       @if map-has-key($grid-breakpoints-min, $breakpoint) {
+
          @media only screen and (#{$min-max}-width: #{map-get( $grid-breakpoints-max, $breakpoint)}) {
             @content;
          }
+
       }
 
       @else {
+
          @media only screen and (#{$min-max}-width: $breakpoint) {
             @content;
          }
-      }
 
+      }
    }
 
 }

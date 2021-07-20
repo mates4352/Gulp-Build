@@ -14,7 +14,7 @@ const watchFile = (сb) => {
    gulp.watch(config.watch.images, images);
    gulp.watch(config.watch.icons, icons);
    сb();
-   
+
 };
 
 export default watchFile;

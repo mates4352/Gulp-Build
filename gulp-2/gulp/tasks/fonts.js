@@ -39,6 +39,6 @@ export const fontsFile = (params) => {
       },params())
    }
    params();
-   
+
 }
 
