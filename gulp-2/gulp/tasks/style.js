@@ -27,7 +27,12 @@ const style = (cb) => {
       })))
       .pipe(gulpif(config.isProd, postcss(
          [
-            mqpacker(),
+            mqpacker({
+               sort: (a, b) => {
+                  return a - b
+               }
+            }),
+
             autoprefixer([
                '> 0.1%',
                'IE 11',

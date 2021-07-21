@@ -15,13 +15,13 @@ const html = (cb) => {
          collapseWhitespace: true,
          removeComments: true,
       })))
-      .pipe(gulpif(config.isProd, rename({
-         suffix: '.min',
-         extname: '.html',
-      })))
+      // .pipe(gulpif(config.isProd, rename({
+      //    suffix: '.min',
+      //    extname: '.html',
+      // })))
       .pipe(gulp.dest(config.build.html))
    cb();
-   
+
 }
 
 export default html;

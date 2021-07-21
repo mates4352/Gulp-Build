@@ -7,11 +7,11 @@
 // -base- //
 @import 'base/nullstyle';
 
-// -global-class- //
-@import 'components/global_class/*.scss';
-
 // -extend- //
 @import 'abstracts/extend/extend';
+
+// -global-class- //
+@import 'components/global_class/*.scss';
 
 // -components- //
 @import 'components/*.scss';
