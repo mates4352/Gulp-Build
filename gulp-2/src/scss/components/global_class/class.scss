@@ -1,12 +1,6 @@
 .container {
-   @if $min-max == min {
-      width: 100%;
-   }
+   max-width: $container-base-size;
    margin: 0 auto;
-
-   @if $min-max == max {
-      max-width: map-get($container-max-widths, 'xl');
-   }
 
    @include media(sm) {
       padding: 0 15px;

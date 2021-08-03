@@ -36,14 +36,14 @@
    top: 0;
 }
 
+.burger::after {
+   top: 100%;
+}
+
 .burger.active::before {
    top: 50%;
    background-color: #ddd;
    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.burger::after {
-   top: 100%;
 }
 
 .burger.active::after {

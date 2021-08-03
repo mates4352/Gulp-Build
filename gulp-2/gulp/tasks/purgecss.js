@@ -2,7 +2,7 @@ import gulp from 'gulp'
 import purgecsss from 'gulp-purgecss'
 
 const purgecss = (cb) => {
-   gulp.src('./dist/css/style.min.css')
+   gulp.src('./dist/css/style.css')
       .pipe(purgecsss(
          {
             content: [

@@ -1,7 +1,6 @@
 import gulp from 'gulp';
 import gulpif from 'gulp-if';
 import plumber from 'gulp-plumber';
-import rename from 'gulp-rename';
 import cleanСss from 'gulp-clean-css';
 import sassGlob from 'gulp-sass-glob';
 import scss from 'gulp-sass';
@@ -39,10 +38,6 @@ const style = (cb) => {
             ]),
          ],
       )))
-      .pipe(gulpif(config.isProd, rename({
-         suffix: '.min',
-         extname: '.css',
-      })))
       .pipe(gulpif(config.isProd, cleanСss({
          level: { 2: { specialComments: 0 } },
       })))

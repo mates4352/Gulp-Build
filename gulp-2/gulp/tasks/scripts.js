@@ -3,7 +3,6 @@ import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import gulpif from 'gulp-if';
 import config from '../config';
-import rename from 'gulp-rename';
 import babel from 'gulp-babel';
 import concat from 'gulp-concat';
 
@@ -16,10 +15,6 @@ const script = (cb) => {
       }))
       .pipe(concat('main.js'))
       .pipe(gulpif(config.isProd, uglify()))
-      .pipe(gulpif(config.isProd, rename({
-         suffix: '.min',
-         extname: '.js',
-      })))
       .pipe(gulpif(config.isDev, sourcemaps.write()))
       .pipe(gulp.dest(config.build.js))
    cb();

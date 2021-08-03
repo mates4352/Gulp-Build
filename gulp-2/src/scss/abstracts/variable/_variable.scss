@@ -7,20 +7,14 @@ $grid-breakpoints-max: (
    sm: 576px - 0.2px,
 );
 
-$grid-breakpoints-min: (
-   sm: 576px,
-   md: 768px,
-   lg: 992px,
-   xl: 1200px,
-);
-
 $container-max-widths: (
-   sm: 540px,
-   md: 720px,
+   xl: 1100px,
    lg: 960px,
-   xl: 1100px
+   md: 720px,
+   sm: 540px
 );
 
+$container-base-size: 1200px;
 $font-family: "font-family";
 $font-family-secondary: "font-family";
 $font-weight: 400;
@@ -28,5 +22,4 @@ $min-width: 320px;
 
 $default-color:#000;
 $secondary-color: #000;
-$base-color: #000;
 
