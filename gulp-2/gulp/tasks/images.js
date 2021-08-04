@@ -22,8 +22,7 @@ const images = () => (
       .pipe(gulp.src(config.src.images)))
    .pipe(gulpif(config.isProd, webp({
       quality: 70,
-   }))
-      .pipe(gulp.dest(config.build.images))
-)
+   })))
+   .pipe(gulp.dest(config.build.images))
 
 export default images;
