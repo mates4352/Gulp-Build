@@ -2,11 +2,13 @@ import gulp from 'gulp';
 import config from './gulp/config';
 import watchFile from './gulp/watch';
 import server from './gulp/server';
+
 import clean from './gulp/tasks/clean';
 import script from './gulp/tasks/scripts';
 import html from './gulp/tasks/html';
 import style from './gulp/tasks/style';
-import { fonts, fontsFile } from './gulp/tasks/fonts';
+import fonts from './gulp/tasks/fonts';
+import fontsFile from './gulp/tasks/fontsFile';
 import images from './gulp/tasks/images';
 import icons from './gulp/tasks/icons';
 import purgecss from './gulp/tasks/purgecss'
@@ -22,7 +24,7 @@ export const build = gulp.series(
       icons,
       fonts,
    ),
-   fontsFile,
+   fontsFile
 );
 
 export const watch = gulp.series(
