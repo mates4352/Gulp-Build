@@ -1,6 +1,7 @@
 $min-max:max;
 
 $grid-breakpoints-max: (
+   xll: 1440px - 0.2px,
    xl: 1200px - 0.2px,
    lg: 992px - 0.2px,
    md: 768px - 0.2px,
@@ -8,18 +9,21 @@ $grid-breakpoints-max: (
 );
 
 $container-max-widths: (
-   xl: 1100px,
+   xl: 1200px,
    lg: 960px,
    md: 720px,
    sm: 540px
 );
 
-$container-base-size: 1200px;
-$font-family: "font-family";
-$font-family-secondary: "font-family";
-$font-weight: 400;
-$min-width: 320px;
+$container_base_size: 1440px;
+$font_family: "font-family", cursive;
+$font_family_secondary: "font-family", cursive;
+$font_weight: 400;
+$min_width: 320px;
 
-$default-color:#000;
-$secondary-color: #000;
+$main_color:#000;
+$secondary_color_1: #000;
+$secondary_color_2: #622751;
+$secondary_color_3: #82d1db;
+$secondary_color_4: #767676;
 

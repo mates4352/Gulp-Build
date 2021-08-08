@@ -10,9 +10,9 @@ const script = (cb) => {
 
   gulp.src(config.concat)
       .pipe(gulpif(config.isDev, sourcemaps.init({ loadMaps: true })))
-      .pipe(babel({
+      .pipe(gulpif(config.isProd, babel({
          presets: ["@babel/preset-env"]
-      }))
+      })))
       .pipe(concat('main.js'))
       .pipe(gulpif(config.isProd, uglify()))
       .pipe(gulpif(config.isDev, sourcemaps.write()))

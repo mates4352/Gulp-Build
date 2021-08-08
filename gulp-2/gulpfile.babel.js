@@ -12,6 +12,7 @@ import fontsFile from './gulp/tasks/fontsFile';
 import images from './gulp/tasks/images';
 import icons from './gulp/tasks/icons';
 import purgecss from './gulp/tasks/purgecss'
+import imagesWebp from './gulp/tasks/imagesWebp';
 
 config.setEnv();
 
@@ -20,6 +21,7 @@ export const build = gulp.series(
       script,
       html,
       style,
+      images,
       icons,
       fonts,
    ),
@@ -36,10 +38,18 @@ export const watch = gulp.series(
 
 // Перед запуском 1-gulp(для быстрой работы) 2-gulp --prod(для продакшена)
 
+
+
+
+
+
 // gulp clean - для очистки
 exports.clean = clean;
 
-// gulp images - для оптимизации изображения, gulp images --prod для оптимизации изображения + создание webp формата изображения
+// gulp imagesWebp - создание webp формата изображения
+exports.webp = imagesWebp;
+
+// gulp images - для переноса изображения, gulp images --prod для оптимизации изображения
 exports.images = images;
 
 // gulp clean - для неиспользуемого css кода

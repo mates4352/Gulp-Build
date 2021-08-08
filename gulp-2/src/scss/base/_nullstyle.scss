@@ -115,10 +115,10 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-	font-family: $font-family;
-	font-weight: $font-weight;
-	color: $default-color;
-   min-width: $min-width;
+	font-family: $font_family;
+	font-weight: $font_weight;
+	color: $main_color;
+   min-width: $min_width;
 }
 
 input::-ms-clear {
