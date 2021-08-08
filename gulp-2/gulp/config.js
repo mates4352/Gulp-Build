@@ -9,7 +9,7 @@ const config = {
       html: `${destPath}`,
       js: `${destPath}/js`,
       css: `${destPath}/css`,
-      fonts: `${destPath}/assets/fonts/`,
+      fonts: `${destPath}/assets/fonts`,
       images: `${destPath}/assets/images`,
       icons: `${destPath}/assets/icons`,
 
@@ -24,8 +24,8 @@ const config = {
       fontsCss: `${srcPath}/scss/base/fontsCss.scss`,
       fonts: `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
       images: `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
-      iconsMutable: `${srcPath}/assets/icons/mutable/*.{png,svg}`,
-      iconsImmutable: `${srcPath}/assets/icons/immutable/*.{png,svg}`,
+      iconsMutable: `${srcPath}/assets/icons/mutable/*.{svg}`,
+      iconsImmutable: `${srcPath}/assets/icons/immutable/*.{svg}`,
 
    },
 
