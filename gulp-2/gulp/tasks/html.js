@@ -10,7 +10,7 @@ const html = (cb) => {
    gulp.src(config.src.html)
       .pipe(plumber())
       .pipe(include())
-      .pipe(gulpif(config.isProd, htmlmin({
+      .pipe(gulpif(config.isMinHtml, htmlmin({
          collapseWhitespace: true,
          removeComments: true,
       })))

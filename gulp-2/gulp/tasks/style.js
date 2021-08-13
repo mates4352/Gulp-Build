@@ -5,8 +5,8 @@ import cleanСss from 'gulp-clean-css';
 import sassGlob from 'gulp-sass-glob';
 import scss from 'gulp-sass';
 import postcss from 'gulp-postcss';
-import mqpacker from 'css-mqpacker';
 import autoprefixer from 'autoprefixer';
+import media from 'gulp-group-css-media-queries'
 
 import config from '../config';
 
@@ -24,21 +24,16 @@ const style = (cb) => {
          format: 'beautify',
          level: { specialComments: true },
       })))
+      .pipe(gulpif(config.isMinCss, media()))
       .pipe(gulpif(config.isProd, postcss(
          [
-            mqpacker({
-               sort: (a, b) => {
-                  return a - b
-               }
-            }),
-
             autoprefixer([
                '> 0.1%',
                'IE 11',
             ]),
          ],
       )))
-      .pipe(gulpif(config.isProd, cleanСss({
+      .pipe(gulpif(config.isMinCss, cleanСss({
          level: { 2: { specialComments: 0 } },
       })))
       .pipe(gulp.dest(config.build.css, { sourcemaps: config.isDev }))

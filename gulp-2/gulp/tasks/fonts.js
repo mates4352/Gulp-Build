@@ -1,18 +1,22 @@
 import gulp from 'gulp';
+import gulpIf from 'gulp-if';
 import ttf2woff from 'gulp-ttf2woff';
 import ttf2woff2 from 'gulp-ttf2woff2';
 
 import config from '../config';
 
-export const fonts = () => (
-   gulp.src(config.src.fonts)
-      .pipe(ttf2woff2())
-      .pipe(gulp.dest(config.build.fonts))
+const fonts = (cb) => {
 
-   .pipe(gulp.src(config.src.fonts))
-      .pipe(ttf2woff())
+   gulp.src(config.src.fonts)
+      .pipe(gulpIf(config.isWoff, ttf2woff2()))
+      .pipe(gulpIf(config.isWoff, gulp.dest(config.build.fonts)))
+
+   .pipe(gulpIf(config.isWoff, gulp.src(config.src.fonts)))
+      .pipe(gulpIf(config.isWoff, ttf2woff()))
       .pipe(gulp.dest(config.build.fonts))
-)
+   cb()
+
+}
 
 export default fonts
 
