@@ -10,7 +10,6 @@ const config = {
       js:      `${destPath}/js`,
       css:     `${destPath}/css`,
       fonts:   `${destPath}/assets/fonts`,
-      icons:   `${destPath}/assets/icons`,
       images:  `${destPath}/assets/images`,
 
    },
@@ -21,7 +20,6 @@ const config = {
       html:            `${srcPath}/*.html`,
       js:              `${srcPath}/js/main.js`,
       style:           `${srcPath}/scss/style.scss`,
-      fontsCss:        `${srcPath}/scss/base/fontsCss.scss`,
       fonts:           `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
       images:          `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
       iconsMutable:    `${srcPath}/assets/icons/mutable/*.{svg}`,

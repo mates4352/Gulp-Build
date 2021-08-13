@@ -11,9 +11,10 @@
    "author": "Sergeu Sabyrkin",
    "license": "WTFPL",
    "scripts": {
-      "dev": "gulp watch",
+      "min": "gulp --prod --minHtml --minCss --minJs",
       "prod": "gulp --prod --minHtml --minCss --minJs --minImg"
    },
+
 
    "devDependencies": {
       "@babel/core": "^7.13.16",
