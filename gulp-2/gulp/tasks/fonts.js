@@ -8,12 +8,15 @@ import config from '../config';
 const fonts = (cb) => {
 
    gulp.src(config.src.fonts)
+
       .pipe(gulpIf(config.isWoff, ttf2woff2()))
       .pipe(gulpIf(config.isWoff, gulp.dest(config.build.fonts)))
 
    .pipe(gulpIf(config.isWoff, gulp.src(config.src.fonts)))
+
       .pipe(gulpIf(config.isWoff, ttf2woff()))
-      .pipe(gulp.dest(config.build.fonts))
+
+   .pipe(gulp.dest(config.build.fonts))
    cb()
 
 }

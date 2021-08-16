@@ -8,6 +8,7 @@ import config from '../config';
 const mutable = (cb) => {
 
    gulp.src(config.src.iconsMutable)
+
       .pipe(gulpif(config.isMinImages, imagemin([
          imagemin.svgo({
             plugins: [
@@ -43,7 +44,8 @@ const mutable = (cb) => {
             ],
          },
       }))
-      .pipe(gulp.dest(config.build.images))
+
+   .pipe(gulp.dest(config.build.images))
    cb();
 
 }
@@ -51,6 +53,7 @@ const mutable = (cb) => {
 const immutable = (cb) => {
 
    gulp.src(config.src.iconsImmutable)
+
       .pipe(gulpif(config.isMinImages, imagemin([
          imagemin.svgo({
             plugins: [
@@ -69,7 +72,8 @@ const immutable = (cb) => {
             },
          },
       }))
-      .pipe(gulp.dest(config.build.images))
+
+   .pipe(gulp.dest(config.build.images))
    cb();
 
 }

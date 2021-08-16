@@ -17,22 +17,28 @@
 
    Команды в консоли - package.json npm run
 
-   3.   npm run prod  -  Используется для создание продакщен версии билда со всеми флагами gulp --prod --minHtml --minCss --minJs --minImg.
-   3.1  npm run min   -  Используется для создание продакщен версии билда без минификации изображения gulp --prod --minHtml --minCss --minJs.
+   3.   npm run prod  -  Используется для создание продакщен версии билда со всеми флагами gulp prod --prod --minHtml --minCss --minJs --minImg.
+   3.1  npm run min   -  Используется для создание продакщен версии билда без минификации изображения gulp prod --prod --minHtml --minCss --minJs.
 
 --------------------------------------------------------------------------------------------------------------------------------------------*/
 //                                                             МЕТОДЫ
 /*-------------------------------------------------------------------------------------------------------------------------------------------
 
-   1.   setEnv()   -  Создает основные флаги сборки.
-   1.1  addWoff()  -  Используется для создания шрифтов woff, woff2 формата для активации передается аргумент true
-   1.2  addWebp()  -  Используется для создания изображения формата webp для активации передается аргумент true
+   1.   setEnv()    -  Создает основные флаги сборки.
+   1.1  addWoff()   -  Используется для создания шрифтов woff, woff2 формата для активации передается аргумент true.
+   1.2  addWebp()   -  Используется для создания изображения формата webp для активации передается аргумент true.
+   1.3  concatJs()  -  Используется для конкатинирования файлов js в заданном порядке.
 
 --------------------------------------------------------------------------------------------------------------------------------------------*/
 
 config.setEnv();
 config.addWoff(false);
 config.addWebp(false);
+config.concatJs([
+
+   'src/js/main.js',
+
+])
 
 // Главные таски сборки
 import gulp from 'gulp';
@@ -55,9 +61,9 @@ import fontsFile from './gulp/tasks/fontsFile';
 
 export const build = gulp.series(
    gulp.parallel(
-      script,
       html,
       style,
+      script,
       images,
       icons,
       fonts,
@@ -65,6 +71,15 @@ export const build = gulp.series(
 );
 
 export const watch = gulp.series(
+   build,
+   gulp.parallel(
+      server,
+      watchFile,
+   )
+);
+
+export const prod = gulp.series(
+   clean,
    build,
    gulp.parallel(
       server,

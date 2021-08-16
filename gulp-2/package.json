@@ -1,21 +1,18 @@
 {
-   "name": "gulp-2",
+   "name": "gulp",
    "version": "1.0.0",
    "description": "gulp assembly",
    "keywords": [
       "GULP",
       "JS",
-      "SCSS",
-      "LINTERS"
+      "SCSS"
    ],
    "author": "Sergeu Sabyrkin",
    "license": "WTFPL",
    "scripts": {
-      "min": "gulp --prod --minHtml --minCss --minJs",
-      "prod": "gulp --prod --minHtml --minCss --minJs --minImg"
+      "prod": "gulp prod --prod --minHtml --minCss --minJs --minImg",
+      "min": "gulp prod --prod --minHtml --minCss --minJs"
    },
-
-
    "devDependencies": {
       "@babel/core": "^7.13.16",
       "@babel/preset-env": "^7.13.15",
@@ -44,12 +41,8 @@
       "gulp-ttf2woff2": "^4.0.1",
       "gulp-uglify": "^3.0.2",
       "gulp-webp": "^4.0.1",
-      "husky": "^4.3.8",
       "imagemin-pngquant": "^9.0.2",
-      "lint-staged": "^10.5.4",
       "postcss": "^8.2.13"
    },
-   "dependencies": {
-      "normalize.css": "^8.0.1"
-   }
+   "dependencies": {}
 }

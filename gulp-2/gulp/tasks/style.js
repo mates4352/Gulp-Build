@@ -13,6 +13,7 @@ import config from '../config';
 const style = (cb) => {
 
    gulp.src(config.src.style, { sourcemaps: config.isDev })
+
       .pipe(plumber())
       .pipe(sassGlob())
       .pipe(scss(
@@ -20,11 +21,7 @@ const style = (cb) => {
             includePaths: ['./node_modules/'],
          },
       ))
-      .pipe(gulpif(config.isDev, cleanСss({
-         format: 'beautify',
-         level: { specialComments: true },
-      })))
-      .pipe(gulpif(config.isMinCss, media()))
+      .pipe(gulpif(config.isProd, media()))
       .pipe(gulpif(config.isProd, postcss(
          [
             autoprefixer([
@@ -33,10 +30,23 @@ const style = (cb) => {
             ]),
          ],
       )))
-      .pipe(gulpif(config.isMinCss, cleanСss({
-         level: { 2: { specialComments: 0 } },
-      })))
-      .pipe(gulp.dest(config.build.css, { sourcemaps: config.isDev }))
+      .pipe(cleanСss(gulpif(
+
+         !config.isMinCss,
+         {
+
+            format: 'beautify',
+            level: { specialComments: true },
+
+         },
+
+         {
+            level: { 2: { specialComments: 0 } },
+         }
+
+      )))
+
+   .pipe(gulp.dest(config.build.css, { sourcemaps: config.isDev }))
    cb();
 
 }

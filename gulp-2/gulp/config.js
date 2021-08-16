@@ -37,13 +37,9 @@ const config = {
 
    },
 
-   concat: [
-
-      `${srcPath}/js/main.js`,
-      // `${srcPath}/js/components/.js`,
-      // `${srcPath}/js/library/.js`,
-
-   ],
+   concatJs(path) {
+      this.concat = path
+   },
 
    setEnv() {
 
@@ -65,4 +61,5 @@ const config = {
    }
 
 };
+
 export default config;

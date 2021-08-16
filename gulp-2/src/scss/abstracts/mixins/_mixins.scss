@@ -21,7 +21,7 @@
    }
 }
 
-@mixin media($breakpoint) {
+@mixin media($min-max, $breakpoint) {
 
    @if map-has-key($grid-breakpoints-max, $breakpoint) {
 

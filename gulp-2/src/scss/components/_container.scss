@@ -1,10 +1,4 @@
 .container {
-   max-width: $container_base_size;
+   max-width: 1440px;
    margin: 0 auto;
-
-   @include media(sm) {
-      padding: 0 15px;
-   }
-
-   @extend %container;
 }
