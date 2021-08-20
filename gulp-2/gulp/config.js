@@ -18,12 +18,10 @@ const config = {
 
       root:            srcPath,
       html:            `${srcPath}/*.html`,
-      js:              `${srcPath}/js/main.js`,
+      js:              `${srcPath}/js/**/*.js`,
       style:           `${srcPath}/scss/style.scss`,
       fonts:           `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
       images:          `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
-      iconsMutable:    `${srcPath}/assets/icons/mutable/*.{svg}`,
-      iconsImmutable:  `${srcPath}/assets/icons/immutable/*.{svg}`,
 
    },
 
@@ -32,8 +30,7 @@ const config = {
       html:    `${srcPath}/**/*.html`,
       js:      `${srcPath}/js/**/*.js`,
       style:   `${srcPath}/scss/**/*.scss`,
-      icons:   `${srcPath}/assets/icons/**/*.{png,svg}`,
-      images:  `${srcPath}/assets/images/**/*.{jpg,png,svg,webp}`,
+      images:  `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
 
    },
 

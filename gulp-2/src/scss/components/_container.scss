@@ -1,4 +1,25 @@
 .container {
-   max-width: 1440px;
+   max-width: 1320px;
    margin: 0 auto;
+
+   @include media(max,xll) {
+      max-width: 1140px;
+   }
+
+   @include media(max, xl) {
+      max-width: 960px;
+   }
+
+   @include media(max, lg) {
+      max-width: 720px;
+   }
+
+   @include media(max, md) {
+      max-width: 540px;
+   }
+
+   @include media(max, sm) {
+      max-width: unset;
+      padding: 0 20px;
+   }
 }

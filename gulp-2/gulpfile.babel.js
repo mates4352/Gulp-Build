@@ -52,7 +52,6 @@ import html from './gulp/tasks/html';
 import style from './gulp/tasks/style';
 import fonts from './gulp/tasks/fonts';
 import images from './gulp/tasks/images';
-import icons from './gulp/tasks/icons';
 
 // Таски для различных задач
 import clean from './gulp/tasks/clean';
@@ -65,7 +64,6 @@ export const build = gulp.series(
       style,
       script,
       images,
-      icons,
       fonts,
    ),
 );

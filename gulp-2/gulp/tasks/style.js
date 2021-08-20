@@ -24,10 +24,12 @@ const style = (cb) => {
       .pipe(gulpif(config.isProd, media()))
       .pipe(gulpif(config.isProd, postcss(
          [
-            autoprefixer([
-               '> 0.1%',
-               'IE 11',
-            ]),
+            autoprefixer(
+               [
+                  '> 0.1%',
+                  'IE 11',
+               ]
+            ),
          ],
       )))
       .pipe(cleanСss(gulpif(
