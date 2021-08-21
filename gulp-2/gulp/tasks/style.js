@@ -21,7 +21,7 @@ const style = (cb) => {
             includePaths: ['./node_modules/'],
          },
       ))
-      .pipe(gulpif(config.isProd, media()))
+      .pipe(gulpif(config.isProd || config.isMinCss, media()))
       .pipe(gulpif(config.isProd, postcss(
          [
             autoprefixer(

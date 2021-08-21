@@ -10,8 +10,9 @@
    "author": "Sergeu Sabyrkin",
    "license": "WTFPL",
    "scripts": {
-      "prod": "gulp prod --prod --minHtml --minCss --minJs --minImg",
-      "min": "gulp prod --prod --minHtml --minCss --minJs"
+      "prod": "gulp clean watch --series --prod --minHtml --minCss --minJs --minImg",
+      "min": "gulp clean watch --series --prod --minHtml --minCss --minJs",
+      "d": "gulp deploy"
    },
    "devDependencies": {
       "@babel/core": "^7.13.16",
@@ -41,6 +42,7 @@
       "gulp-ttf2woff2": "^4.0.1",
       "gulp-uglify": "^3.0.2",
       "gulp-webp": "^4.0.1",
+      "gulp-zip": "^5.1.0",
       "imagemin-pngquant": "^9.0.2",
       "postcss": "^8.2.13"
    },

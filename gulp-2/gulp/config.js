@@ -1,5 +1,6 @@
 const srcPath = 'src';
 const destPath = 'dist';
+const deploy = 'deploy'
 
 const config = {
 
@@ -16,12 +17,12 @@ const config = {
 
    src: {
 
-      root:            srcPath,
-      html:            `${srcPath}/*.html`,
-      js:              `${srcPath}/js/**/*.js`,
-      style:           `${srcPath}/scss/style.scss`,
-      fonts:           `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
-      images:          `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
+      root:    srcPath,
+      html:    `${srcPath}/*.html`,
+      js:      `${srcPath}/js/**/*.js`,
+      style:   `${srcPath}/scss/style.scss`,
+      fonts:   `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
+      images:  `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
 
    },
 
@@ -34,8 +35,13 @@ const config = {
 
    },
 
-   concatJs(path) {
-      this.concat = path
+   prod: {
+      root:           deploy,
+      src:            `${srcPath}/**/*`,
+      srcProd:        `${deploy}/${srcPath}`,
+      dist:           `${destPath}/**/*`,
+      distProd:       `${deploy}/${destPath}`,
+      distProdPath:   `${deploy}/${destPath}/**/*`,
    },
 
    setEnv() {
@@ -47,6 +53,14 @@ const config = {
       this.isProd         =   process.argv.includes('--prod');
       this.isDev          =   !this.isProd && !this.isMinCss && !this.isMinScripts;
 
+   },
+
+   projectName(projectName) {
+      this.name = projectName
+   },
+
+   concatJs(path) {
+      this.concat = path
    },
 
    addWoff(woff) {
