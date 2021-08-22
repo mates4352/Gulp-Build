@@ -1,6 +1,7 @@
 import gulp from 'gulp'
 import config from '../config'
 import zip from 'gulp-zip'
+
 const deploy = (cb) => {
    gulp.src(config.prod.src)
    .pipe(gulp.dest(config.prod.srcProd))

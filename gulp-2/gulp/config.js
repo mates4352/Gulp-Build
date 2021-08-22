@@ -17,12 +17,14 @@ const config = {
 
    src: {
 
-      root:    srcPath,
-      html:    `${srcPath}/*.html`,
-      js:      `${srcPath}/js/**/*.js`,
-      style:   `${srcPath}/scss/style.scss`,
-      fonts:   `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
-      images:  `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
+      root:       srcPath,
+      html:       `${srcPath}/*.html`,
+      js:         `${srcPath}/js/**/*.js`,
+      style:      `${srcPath}/scss/style.scss`,
+      fonts:      `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
+      fontsFile:  `${srcPath}/scss/base/_fonts.scss`,
+      fontsPath:   `${srcPath}/assets/fonts`,
+      images:     `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
 
    },
 

@@ -7,8 +7,4 @@ const clean = () => {
 
 }
 
-
-
-
-
 export default clean;
