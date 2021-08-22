@@ -10,7 +10,7 @@
    "author": "Sergeu Sabyrkin",
    "license": "WTFPL",
    "scripts": {
-      "prod": "gulp clean watch --series --prod --minHtml --minCss --minJs --minImg",
+      "p": "gulp clean watch --series --prod --minHtml --minCss --minJs --minImg",
       "min": "gulp clean watch --series --prod --minHtml --minCss --minJs",
       "d": "gulp deploy"
    },
