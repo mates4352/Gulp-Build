@@ -38,7 +38,7 @@ const style = (cb) => {
          {
 
             format: 'beautify',
-            level: { specialComments: true },
+            level: { 1: {specialComments: 0}},
 
          },
 
