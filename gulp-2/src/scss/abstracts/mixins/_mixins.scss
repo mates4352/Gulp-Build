@@ -19,22 +19,22 @@
    }
 }
 
-/* -------------------------------------------------
-                     @media
+/* -----------------------------------------------------------------
+                         @media
 
 1-ый парметр $min-max принимает 3 аргумента min, max, min-max.
-   min - для mobail @media
-   max - для dectop @media
-   min-max - для промежутка между mobai-dectop @media
+   min       - для mobail @media
+   max       - для dectop @media
+   min-max   - для промежутка между mobai-dectop @media
 
 2-ой параметр $breakpoint_1 принимает 1-ин аргумет.
-   ключ - хранятся в созданной карте $grid_breakpoints(xxl, xl, lg, md , sm...)
+   ключ      - хранятся в созданной карте $grid_breakpoints(xxl, xl, lg, md , sm...)
 
 3-ий параметр $breakpoint_2 принимает 1-ин аргумет, является не обязательным параметром.
-   ключ - хранятся в созданной карте $grid_breakpoints(xxl, xl, lg, md , sm...) нужен для 1-ого параметра 3 аргумента.
+   ключ      - хранятся в созданной карте $grid_breakpoints(xxl, xl, lg, md , sm...) нужен для 1-ого параметра 3 аргумента.
 
-map-has-key - Нужен для проверки ключа в карте, если ключа указанного нет то условие не выполняется.
-map-get - Нужен для использование ключей из карты.
+map-has-key  - Нужен для проверки ключа в карте, если ключа указанного нет то условие не выполняется.
+map-get      - Нужен для использование ключей из карты.
 
 Пример:
 
@@ -48,13 +48,13 @@ map-get - Нужен для использование ключей из кар�
 @include media(min, 870px,) { display: none;}
 @include media(min-max, 870px, 1000px) { display: none;}
 
-----------------------------------------------------*/
+--------------------------------------------------------------------*/
 
 
 
 @mixin media($min-max, $breakpoint_1, $breakpoint_2: none) {
 
-   @if  map-has-key($grid_breakpoints, $breakpoint_1) and $min-max == "max" {
+   @if  map-has-key($grid_breakpoints, $breakpoint_1) and $min-max == "max"{
 
       @media only screen and (#{$min-max}-width: #{map-get( $grid_breakpoints, $breakpoint_1)}) {
          @content;
@@ -73,6 +73,14 @@ map-get - Нужен для использование ключей из кар�
    @else if map-has-key($grid_breakpoints, $breakpoint_1) and $min-max == 'min-max' {
 
       @media only screen and (min-width: #{map-get( $grid_breakpoints, $breakpoint_1)}) and (max-width: #{map-get( $grid_breakpoints, $breakpoint_2)}){
+         @content;
+      }
+
+   }
+
+   @else if $min-max == 'min-max' {
+
+      @media only screen and (min-width: $breakpoint_1) and (max-width: $breakpoint_2){
          @content;
       }
 
