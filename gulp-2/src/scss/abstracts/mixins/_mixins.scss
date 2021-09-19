@@ -12,15 +12,15 @@
       font-family: $font_name;
       font-display: swap;
       src:
-      url("../assets/fonts/#{$file_name}.woff2") format("woff2"),
-         url("../assets/fonts/#{$file_name}.woff") format("woff");
+      url("./fonts/#{$file_name}.woff2") format("woff2"),
+         url("./fonts/#{$file_name}.woff") format("woff");
       font-weight: #{$weight};
       font-style: #{$style};
    }
 }
 
 /* -----------------------------------------------------------------
-                         @media
+                       @media
 
 1-ый парметр $min-max принимает 3 аргумента min, max, min-max.
    min       - для mobail @media
@@ -33,24 +33,21 @@
 3-ий параметр $breakpoint_2 принимает 1-ин аргумет, является не обязательным параметром.
    ключ      - хранятся в созданной карте $grid_breakpoints(xxl, xl, lg, md , sm...) нужен для 1-ого параметра 3 аргумента.
 
-map-has-key  - Нужен для проверки ключа в карте, если ключа указанного нет то условие не выполняется.
-map-get      - Нужен для использование ключей из карты.
+ Дополонение:
+   map-has-key  - Нужен для проверки ключа в карте, если ключа указанного нет то условие не выполняется.
+   map-get      - Нужен для использование ключей из карты.
 
 Пример:
-
-@include media(max, xxl) { display: none;}
-@include media(min, xxl) { display: none;}
-@include media(min-max, mn-lg, mx-xxl) { display: none;}
+   @include media(max, xxl) { display: none;}
+   @include media(min, xxl) { display: none;}
+   @include media(min-max, mn-lg, mx-xxl) { display: none;}
 
 Одиночные брекпоинты:
-
-@include media(max, 870px,) { display: none;}
-@include media(min, 870px,) { display: none;}
-@include media(min-max, 870px, 1000px) { display: none;}
+   @include media(max, 870px,) { display: none;}
+   @include media(min, 870px,) { display: none;}
+   @include media(min-max, 870px, 1000px) { display: none;}
 
 --------------------------------------------------------------------*/
-
-
 
 @mixin media($min-max, $breakpoint_1, $breakpoint_2: none) {
 

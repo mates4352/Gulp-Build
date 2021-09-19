@@ -10,8 +10,8 @@ const config = {
       html:    `${destPath}`,
       js:      `${destPath}/js`,
       css:     `${destPath}/css`,
-      fonts:   `${destPath}/assets/fonts`,
-      images:  `${destPath}/assets/images`,
+      fonts:   `${destPath}/fonts`,
+      images:  `${destPath}/images`,
 
    },
 
@@ -23,7 +23,7 @@ const config = {
       style:      `${srcPath}/scss/style.scss`,
       fonts:      `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
       fontsFile:  `${srcPath}/scss/base/_fonts.scss`,
-      fontsPath:   `${srcPath}/assets/fonts`,
+      fontsPath:  `${srcPath}/assets/fonts`,
       images:     `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
 
    },
