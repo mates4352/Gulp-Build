@@ -1,3 +1,6 @@
+:root {
+   --med: 1200px;
+}
 .container {
    max-width: 1320px;
    margin: 0 auto;
@@ -22,6 +25,10 @@
       max-width: unset;
       padding-left: 20px;
       padding-right: 20px;
+   }
+
+   @include media(max, var(--med)) {
+      display: none;
    }
 }
 
