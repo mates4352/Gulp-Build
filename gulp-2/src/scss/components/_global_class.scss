@@ -1,6 +1,36 @@
 :root {
-   --med: 1200px;
+   --supercaption: 32px 40px 700 var(--font_family);
+   --h1: 24px 32px 700 var(--font_family);
+   --h2: 24px 32px 700 var(--font_family);
+
+   --p1: 24px 32px 700 var(--font_family);
+   --p1: 24px 32px 700 var(--font_family);
+
+   @include media(max, xl) {
+      --supercaption: 12px 40px 700 var(--font_family);
+      --h1: 24px 32px 700 var(--font_family);
+      --h2: 24px 32px 700 var(--font_family);
+      --p1: 24px 32px 700 var(--font_family);
+      --p1: 24px 32px 700 var(--font_family);
+   }
+
+   @include media(max, lg) {
+      --supercaption: 12px 40px 700 var(--font_family);
+      --h1: 24px 32px 700 var(--font_family);
+      --h2: 24px 32px 700 var(--font_family);
+      --p1: 24px 32px 700 var(--font_family);
+      --p1: 24px 32px 700 var(--font_family);
+   }
+
+   @include media(max, md) {
+      --supercaption: 12px 40px 700 var(--font_family);
+      --h1: 24px 32px 700 var(--font_family);
+      --h2: 24px 32px 700 var(--font_family);
+      --p1: 24px 32px 700 var(--font_family);
+      --p1: 24px 32px 700 var(--font_family);
+   }
 }
+
 .container {
    max-width: 1320px;
    margin: 0 auto;
@@ -26,23 +56,24 @@
       padding-left: 20px;
       padding-right: 20px;
    }
-
-   @include media(max, var(--med)) {
-      display: none;
-   }
 }
 
 .supercaption {
+   font: var(--supercaption);
 }
 
 .h1 {
+   font: var(--h1);
 }
 
 .h2 {
+   font: var(--h2);
 }
 
 .p1 {
+   font: var(--p1);
 }
 
 .p2 {
+   font: var(--p2);
 }

@@ -7,7 +7,6 @@ import scss from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
 import media from 'gulp-group-css-media-queries';
-import postMedia from 'postcss-media-variables';
 
 import config from '../config';
 
@@ -22,19 +21,17 @@ const style = (cb) => {
             includePaths: ['./node_modules/'],
          },
       ))
+      .pipe(gulpif(config.isProd || config.isMinCss, media()))
       .pipe(postcss(
          [
-            postMedia(),
             autoprefixer(
                [
                   '> 0.1%',
                   'IE 11',
                ]
             ),
-            postMedia(),
          ],
       ))
-      .pipe(gulpif(config.isProd || config.isMinCss, media()))
 
       .pipe(cleanСss(gulpif(
 
@@ -42,7 +39,6 @@ const style = (cb) => {
          {
             format: 'beautify',
             level: { 1: {specialComments: 0}},
-
          },
 
          {

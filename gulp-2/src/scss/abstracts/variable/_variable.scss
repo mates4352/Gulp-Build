@@ -9,12 +9,7 @@ $grid_breakpoints: (
    mx-xl: 1199px,
 );
 
-$font_family: "font-family", cursive;
-$font_family_secondary: "font-family", cursive;
-$min_width: 320px;
-
-$main_color:#000;
-$secondary_color_1: #000;
-$secondary_color_2: #000;
-$secondary_color_3: #000;
-$secondary_color_4: #000;
+:root {
+   --font_family: "____";
+   --width: 320px;
+}

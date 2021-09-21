@@ -1,4 +1,8 @@
 @charset "UTF-8";
+:root {
+  --font_family: "____";
+  --width: 320px
+}
 sub,
 sup {
   font-size: 75%;
@@ -75,6 +79,7 @@ template {
   border: 0;
   padding: 0;
   white-space: nowrap;
+  -webkit-clip-path: inset(100%);
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden
@@ -94,9 +99,8 @@ body {
   font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: font-family,cursive;
-  color: #000;
-  min-width: 320px
+  font-family: var(--font-family);
+  min-width: var(--width)
 }
 input::-ms-clear {
   display: none
@@ -131,11 +135,30 @@ h6 {
   font-weight: inherit
 }
 :root {
-  --med: 1200px
+  --supercaption: 32px 40px 700 var(--font_family);
+  --h1: 24px 32px 700 var(--font_family);
+  --h2: 24px 32px 700 var(--font_family);
+  --p1: 24px 32px 700 var(--font_family);
+  --p1: 24px 32px 700 var(--font_family)
 }
 .container {
   max-width: 1320px;
   margin: 0 auto
+}
+.supercaption {
+  font: var(--supercaption)
+}
+.h1 {
+  font: var(--h1)
+}
+.h2 {
+  font: var(--h2)
+}
+.p1 {
+  font: var(--p1)
+}
+.p2 {
+  font: var(--p2)
 }
 @media only screen and (max-width:1439px) {
   .container {
@@ -143,16 +166,37 @@ h6 {
   }
 }
 @media only screen and (max-width:1199px) {
+  :root {
+    --supercaption: 12px 40px 700 var(--font_family);
+    --h1: 24px 32px 700 var(--font_family);
+    --h2: 24px 32px 700 var(--font_family);
+    --p1: 24px 32px 700 var(--font_family);
+    --p1: 24px 32px 700 var(--font_family)
+  }
   .container {
     max-width: 960px
   }
 }
 @media only screen and (max-width:991px) {
+  :root {
+    --supercaption: 12px 40px 700 var(--font_family);
+    --h1: 24px 32px 700 var(--font_family);
+    --h2: 24px 32px 700 var(--font_family);
+    --p1: 24px 32px 700 var(--font_family);
+    --p1: 24px 32px 700 var(--font_family)
+  }
   .container {
     max-width: 720px
   }
 }
 @media only screen and (max-width:767px) {
+  :root {
+    --supercaption: 12px 40px 700 var(--font_family);
+    --h1: 24px 32px 700 var(--font_family);
+    --h2: 24px 32px 700 var(--font_family);
+    --p1: 24px 32px 700 var(--font_family);
+    --p1: 24px 32px 700 var(--font_family)
+  }
   .container {
     max-width: 540px
   }
@@ -162,10 +206,5 @@ h6 {
     max-width: unset;
     padding-left: 20px;
     padding-right: 20px
-  }
-}
-@media only screen and (max-width:var(--med)) {
-  .container {
-    display: none
   }
 }
