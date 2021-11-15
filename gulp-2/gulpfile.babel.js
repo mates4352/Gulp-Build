@@ -57,8 +57,8 @@ import server from './gulp/server';
 
 // Таски входящие в основной билд сборки
 import script from './gulp/tasks/scripts';
-import html from './gulp/tasks/html';
-import style from './gulp/tasks/style';
+import { html, pageHtml } from './gulp/tasks/html';
+import { style, pageStyle, } from './gulp/tasks/style';
 import fonts from './gulp/tasks/fonts';
 import images from './gulp/tasks/images';
 
@@ -71,7 +71,9 @@ import deploy from './gulp/tasks/deploy';
 export const build = gulp.series(
    gulp.parallel(
       html,
+      pageHtml,
       style,
+      pageStyle,
       script,
       images,
       fonts,

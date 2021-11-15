@@ -10,7 +10,7 @@ import media from 'gulp-group-css-media-queries';
 
 import config from '../config';
 
-const style = (cb) => {
+export const style = (cb) => {
 
    gulp.src(config.src.style, { sourcemaps: config.isDev })
 
@@ -51,4 +51,41 @@ const style = (cb) => {
 
 }
 
-export default style;
+export const pageStyle = (cb) => {
+
+   gulp.src(config.src.pageStyle, { sourcemaps: config.isDev })
+
+      .pipe(plumber())
+      .pipe(scss(
+         {
+            includePaths: ['./node_modules/'],
+         },
+      ))
+      .pipe(gulpif(config.isProd || config.isMinCss, media()))
+      .pipe(postcss(
+         [
+            autoprefixer(
+               [
+                  '> 0.1%',
+                  'IE 11',
+               ]
+            ),
+         ],
+      ))
+
+      .pipe(cleanСss(gulpif(
+
+         !config.isMinCss,
+         {
+            format: 'beautify',
+            level: { 1: {specialComments: 0}},
+         },
+
+         {
+            level: { 2: { specialComments: 0 } },
+         }
+
+      )))
+   .pipe(gulp.dest(config.build.pageCss, { sourcemaps: config.isDev }))
+   cb();
+}

@@ -5,7 +5,7 @@ import gulpif from 'gulp-if';
 import plumber from 'gulp-plumber';
 import config from '../config';
 
-const html = (cb) => {
+export const html = (cb) => {
 
    gulp.src(config.src.html)
 
@@ -21,4 +21,16 @@ const html = (cb) => {
 
 }
 
-export default html;
+export const pageHtml = (cb) => {
+   gulp.src(config.src.pageHtml)
+
+   .pipe(plumber())
+   .pipe(include())
+   .pipe(gulpif(config.isMinHtml, htmlmin({
+      collapseWhitespace: true,
+      removeComments: true,
+   })))
+
+   .pipe(gulp.dest(config.build.pageHtml))
+   cb();
+}

@@ -6,12 +6,14 @@ const config = {
 
    build: {
 
-      root:    destPath,
-      html:    `${destPath}`,
-      js:      `${destPath}/js`,
-      css:     `${destPath}/css`,
-      fonts:   `${destPath}/fonts`,
-      images:  `${destPath}/images`,
+      root:          destPath,
+      html:          `${destPath}`,
+      pageHtml:      `${destPath}`,
+      js:            `${destPath}/js`,
+      css:           `${destPath}/css`,
+      pageCss:       `${destPath}/css`,
+      fonts:         `${destPath}/fonts`,
+      images:        `${destPath}/images`,
 
    },
 
@@ -19,8 +21,10 @@ const config = {
 
       root:       srcPath,
       html:       `${srcPath}/*.html`,
+      pageHtml:   `${srcPath}/html/page/*.html`,
       js:         `${srcPath}/js/**/*.js`,
       style:      `${srcPath}/scss/style.scss`,
+      pageStyle:  `${srcPath}/scss/page/*.scss`,
       fonts:      `${srcPath}/assets/fonts/*.{ttf,eot,svg,woff,woff2}`,
       fontsFile:  `${srcPath}/scss/base/_fonts.scss`,
       fontsPath:  `${srcPath}/assets/fonts`,
@@ -30,10 +34,11 @@ const config = {
 
    watch: {
 
-      html:    `${srcPath}/**/*.html`,
-      js:      `${srcPath}/js/**/*.js`,
-      style:   `${srcPath}/scss/**/*.scss`,
-      images:  `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
+      html:       `${srcPath}/**/*.html`,
+      pageHtml:   `${srcPath}/html/page/*.html`,
+      js:         `${srcPath}/js/**/*.js`,
+      style:      `${srcPath}/scss/**/*.scss`,
+      images:     `${srcPath}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
 
    },
 
