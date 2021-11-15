@@ -9,7 +9,8 @@
 @import 'base/nullstyle';
 
 // -components- //
-@import 'components/*.scss';
+@import 'components/global_class';
+@import 'components/fonts';
 
 // -layout- //
 @import 'layout/header';

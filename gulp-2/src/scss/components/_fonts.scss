@@ -1,0 +1,51 @@
+:root {
+   --supercaption: 32px/1.3 var(--font_family);
+   --h1: 24px/1.3 var(--font_family);
+   --h2: 24px/1.3 var(--font_family);
+   --p1: 24px/1.3 var(--font_family);
+   --p1: 24px/1.3 var(--font_family);
+
+   @include media(max, xl) {
+      --supercaption: 12px/1.3 var(--font_family);
+      --h1: 24px/1.3 var(--font_family);
+      --h2: 24px/1.3 var(--font_family);
+      --p1: 24px/1.3 var(--font_family);
+      --p1: 24px/1.3 var(--font_family);
+   }
+
+   @include media(max, lg) {
+      --supercaption: 12px/1.3 var(--font_family);
+      --h1: 24px/1.3 var(--font_family);
+      --h2: 24px/1.3 var(--font_family);
+      --p1: 24px/1.3 var(--font_family);
+      --p1: 24px/1.3 var(--font_family);
+   }
+
+   @include media(max, md) {
+      --supercaption: 12px/1.3 var(--font_family);
+      --h1: 24px/1.3 var(--font_family);
+      --h2: 24px/1.3 var(--font_family);
+      --p1: 24px/1.3 var(--font_family);
+      --p1: 24px/1.3 var(--font_family);
+   }
+}
+
+.supercaption {
+   font: var(--supercaption);
+}
+
+.h1 {
+   font: var(--h1);
+}
+
+.h2 {
+   font: var(--h2);
+}
+
+.p1 {
+   font: var(--p1);
+}
+
+.p2 {
+   font: var(--p2);
+}

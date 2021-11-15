@@ -107,6 +107,11 @@ body {
 input::-ms-clear {
   display: none
 }
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset
+}
 button {
   cursor: pointer
 }
@@ -127,16 +132,16 @@ ul li {
 img {
   vertical-align: bottom
 }
+.container {
+  max-width: 1320px;
+  margin: 0 auto
+}
 :root {
   --supercaption: 32px/1.3 var(--font_family);
   --h1: 24px/1.3 var(--font_family);
   --h2: 24px/1.3 var(--font_family);
   --p1: 24px/1.3 var(--font_family);
   --p1: 24px/1.3 var(--font_family)
-}
-.container {
-  max-width: 1320px;
-  margin: 0 auto
 }
 .supercaption {
   font: var(--supercaption)
@@ -159,18 +164,9 @@ img {
   }
 }
 @media only screen and (max-width:1199px) {
-  :root {
-    --supercaption: 12px/1.3 var(--font_family);
-    --h1: 24px/1.3 var(--font_family);
-    --h2: 24px/1.3 var(--font_family);
-    --p1: 24px/1.3 var(--font_family);
-    --p1: 24px/1.3 var(--font_family)
-  }
   .container {
     max-width: 960px
   }
-}
-@media only screen and (max-width:991px) {
   :root {
     --supercaption: 12px/1.3 var(--font_family);
     --h1: 24px/1.3 var(--font_family);
@@ -178,11 +174,11 @@ img {
     --p1: 24px/1.3 var(--font_family);
     --p1: 24px/1.3 var(--font_family)
   }
+}
+@media only screen and (max-width:991px) {
   .container {
     max-width: 720px
   }
-}
-@media only screen and (max-width:767px) {
   :root {
     --supercaption: 12px/1.3 var(--font_family);
     --h1: 24px/1.3 var(--font_family);
@@ -190,8 +186,17 @@ img {
     --p1: 24px/1.3 var(--font_family);
     --p1: 24px/1.3 var(--font_family)
   }
+}
+@media only screen and (max-width:767px) {
   .container {
     max-width: 540px
+  }
+  :root {
+    --supercaption: 12px/1.3 var(--font_family);
+    --h1: 24px/1.3 var(--font_family);
+    --h2: 24px/1.3 var(--font_family);
+    --p1: 24px/1.3 var(--font_family);
+    --p1: 24px/1.3 var(--font_family)
   }
 }
 @media only screen and (max-width:575px) {
