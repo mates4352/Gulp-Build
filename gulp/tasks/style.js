@@ -12,7 +12,7 @@ import config from '../config';
 
 export const style = (cb) => {
 
-   gulp.src(config.src.style, { sourcemaps: config.isDev })
+   gulp.src(config.src.style)
 
       .pipe(plumber())
       .pipe(sassGlob())
@@ -21,7 +21,7 @@ export const style = (cb) => {
             includePaths: ['./node_modules/'],
          },
       ))
-      .pipe(gulpif(config.isProd || config.isMinCss, media()))
+      .pipe(media())
       .pipe(postcss(
          [
             autoprefixer(
@@ -46,14 +46,14 @@ export const style = (cb) => {
          }
 
       )))
-   .pipe(gulp.dest(config.build.css, { sourcemaps: config.isDev }))
+   .pipe(gulp.dest(config.build.css))
    cb();
 
 }
 
 export const pageStyle = (cb) => {
 
-   gulp.src(config.src.pageStyle, { sourcemaps: config.isDev })
+   gulp.src(config.src.pageStyle)
 
       .pipe(plumber())
       .pipe(scss(
@@ -61,7 +61,7 @@ export const pageStyle = (cb) => {
             includePaths: ['./node_modules/'],
          },
       ))
-      .pipe(gulpif(config.isProd || config.isMinCss, media()))
+      .pipe(media())
       .pipe(postcss(
          [
             autoprefixer(
@@ -86,6 +86,6 @@ export const pageStyle = (cb) => {
          }
 
       )))
-   .pipe(gulp.dest(config.build.pageCss, { sourcemaps: config.isDev }))
+   .pipe(gulp.dest(config.build.pageCss))
    cb();
 }

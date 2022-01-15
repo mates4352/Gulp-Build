@@ -1,10 +1,9 @@
 //--------------text----------------//
 
-@mixin font($size,$lh,$font-weight:null,$text-align:null) {
-   font-size: $size;
-   line-height: $lh;
-   font-weight: $font-weight;
-   text-align: $text-align;
+@mixin adaptive-font($maxSizeFont, $minSizeFont, $maxWidth, $minWidth) {
+   $sizeFont: $maxSizeFont - $minSizeFont;
+   $maxWidth: $maxWidth - $minWidth;
+   font-size: calc(#{$minSizeFont + px} + #{$sizeFont} * ((100vw - #{$minWidth + px}) / #{$maxWidth}));
 }
 
 @mixin font-face($font_name, $file_name, $weight, $style) {
@@ -23,9 +22,9 @@
                        @media
 
 1-ый параметр $min-max принимает 3 аргумента min, max, min-max.
-   min       - для mobail @media
+   min       - для mobil @media
    max       - для dectop @media
-   min-max   - для промежутка между mobai-dectop @media
+   min-max   - для промежутка между mobil-dectop @media
 
 2-ой параметр $breakpoint_1 принимает 1-ин аргумент.
    ключ      - хранятся в созданной карте $grid_breakpoints(xxl, xl, lg, md , sm...)

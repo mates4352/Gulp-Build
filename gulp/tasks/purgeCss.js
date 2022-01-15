@@ -1,9 +1,9 @@
 import gulp from 'gulp'
-import purgecsss from 'gulp-purgecss'
+import purge from 'gulp-purgecss'
 
-const purgecss = (cb) => {
+const purgeCss = (cb) => {
    gulp.src('./dist/css/style.css')
-      .pipe(purgecsss(
+      .pipe(purge(
          {
             content: [
                'src/**/*.html',
@@ -15,4 +15,4 @@ const purgecss = (cb) => {
    cb();
 }
 
-export default purgecss;
+export default purgeCss;

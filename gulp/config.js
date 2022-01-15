@@ -1,6 +1,6 @@
 const srcPath = 'src';
 const destPath = 'dist';
-const deploy = 'deploy'
+const deploy = `deploy/${process.argv[process.argv.length - 1].slice(2)}`;
 
 const config = {
 
@@ -8,9 +8,9 @@ const config = {
 
       root:          destPath,
       html:          `${destPath}`,
-      pageHtml:      `${destPath}`,
       js:            `${destPath}/js`,
       css:           `${destPath}/css`,
+      pageHtml:      `${destPath}`,
       pageCss:       `${destPath}/css`,
       fonts:         `${destPath}/fonts`,
       images:        `${destPath}/images`,
@@ -43,27 +43,22 @@ const config = {
    },
 
    prod: {
-      root:           deploy,
+
+      root:           `${deploy}`,
       src:            `${srcPath}/**/*`,
       srcProd:        `${deploy}/${srcPath}`,
       dist:           `${destPath}/**/*`,
       distProd:       `${deploy}/${destPath}`,
-      distProdPath:   `${deploy}/${destPath}/**/*`,
+
    },
 
    setEnv() {
 
       this.isMinCss       =   process.argv.includes('--minCss');
       this.isMinHtml      =   process.argv.includes('--minHtml');
-      this.isMinScripts   =   process.argv.includes('--minJs');
       this.isMinImages    =   process.argv.includes('--minImg');
-      this.isProd         =   process.argv.includes('--prod');
-      this.isDev          =   !this.isProd && !this.isMinCss && !this.isMinScripts;
-
-   },
-
-   projectName(projectName) {
-      this.name = projectName
+      this.isDeploy       =   process.argv.includes('--deploy');
+      this.isDev          =   !this.isMinCss;
    },
 
    concatJs(path) {
